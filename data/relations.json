@@ -1,5 +1,5 @@
 {
-  "_note": "Relations de départ issues de la maquette de généalogie. Types : derive, synthese, rupture, opposition. Toutes à sourcer.",
+  "_note": "Fichier généré par npm run import:excel depuis data/source/compas-referentiel.xlsx. Ne pas modifier à la main.",
   "relations": [
     {
       "source": "liberalisme-classique",

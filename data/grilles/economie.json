@@ -1,4 +1,5 @@
 {
+  "_note": "Fichier généré par npm run import:excel depuis data/source/compas-referentiel.xlsx. Ne pas modifier à la main.",
   "id": "economie",
   "nom": "Économie",
   "ordre": 1,
@@ -10,8 +11,7 @@
   "criteres": [
     {
       "id": "eco-1",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Propriété]",
-      "libelleCourt": "Propriété",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -24,8 +24,7 @@
     },
     {
       "id": "eco-2",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Marché]",
-      "libelleCourt": "Marché",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -38,8 +37,7 @@
     },
     {
       "id": "eco-3",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Redistribution]",
-      "libelleCourt": "Redistribution",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -52,8 +50,7 @@
     },
     {
       "id": "eco-4",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Planification]",
-      "libelleCourt": "Planification",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -66,8 +63,7 @@
     },
     {
       "id": "eco-5",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Commerce extérieur]",
-      "libelleCourt": "Commerce extérieur",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -80,8 +76,7 @@
     },
     {
       "id": "eco-6",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Travail]",
-      "libelleCourt": "Travail",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -94,8 +89,7 @@
     },
     {
       "id": "eco-7",
-      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Monnaie et finance]",
-      "libelleCourt": "Monnaie et finance",
+      "libelle": "[À COMPLÉTER]",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {

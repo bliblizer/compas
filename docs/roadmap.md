@@ -10,7 +10,7 @@ Principe : une URL en ligne dès la première itération, puis une brique à la 
 | 1 | Fiches courants | `03-fiche.md` | Index des courants, page fiche, radar par grille avec superposition | Fait |
 | 2 | Carte doctrinale | `01-carte.md` | Carte en mode démo, puis projection ACP dès que les données le permettent | À faire |
 | 3 | Généalogie | `02-genealogie.md` | Frise par familles depuis `relations.json` | À faire |
-| 4 | Import des grilles Excel | à écrire | Script de conversion Excel → `data/grilles` et `data/scores` | Attend les fichiers Excel |
+| 4 | Import des grilles Excel | `05-import-excel.md` | Script `npm run import:excel` : classeur → `data/` et en-tête des fiches | Fait (critères et notes à saisir) |
 | 5 | Observatoire | `04-candidats.md` | Page candidats, d'abord en démo anonyme, puis données réelles | À faire |
 | 6 | Pages éditoriales | à écrire | Méthode, « Pourquoi le débat est-il si resserré ? », À propos | À rédiger |
 | 7 | Comparateur dédié | à écrire | Page de comparaison libre de 2 à 4 courants | Plus tard |

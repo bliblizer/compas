@@ -16,7 +16,7 @@ npm run dev          # site local sur http://localhost:4321/compas/
 npm run build        # construit le site dans dist/
 npm run preview      # sert le build localement
 npm run check:data   # valide data/ et les fiches (schémas, références croisées)
-npm run fiches       # crée les fiches manquantes depuis le catalogue (n'écrase rien)
+npm run import:excel # importe data/source/compas-referentiel.xlsx (ajouter -- --dry-run pour simuler)
 ```
 
 Le site est déployé sur GitHub Pages à chaque push sur `main` (`.github/workflows/deploy.yml`).
@@ -24,3 +24,4 @@ Le site est déployé sur GitHub Pages à chaque push sur `main` (`.github/workf
 ## Documentation
 
 La conception validée se trouve dans `docs/` ; les instructions de travail dans `CLAUDE.md`.
+Les données structurées se saisissent dans `data/source/compas-referentiel.xlsx` ; le texte des fiches, dans `src/content/courants/` (voir `docs/redaction-fiches.md`).

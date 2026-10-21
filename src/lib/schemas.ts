@@ -78,6 +78,7 @@ export const critereSchema = z
 
 export const grilleSchema = z
   .object({
+    _note: z.string().optional(),
     id: identifiant,
     nom: z.string().min(1),
     ordre: z.number().int().positive(),
@@ -105,6 +106,7 @@ export const valeurScoreSchema = z
 
 export const scoresSchema = z
   .object({
+    _note: z.string().optional(),
     courant: identifiant,
     scores: z.record(
       identifiant,

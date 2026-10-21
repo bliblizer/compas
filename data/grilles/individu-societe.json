@@ -1,4 +1,5 @@
 {
+  "_note": "Fichier généré par npm run import:excel depuis data/source/compas-referentiel.xlsx. Ne pas modifier à la main.",
   "id": "individu-societe",
   "nom": "Individu et société",
   "ordre": 3,

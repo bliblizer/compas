@@ -4,6 +4,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { z } from 'astro/zod';
 import { parse as parseYaml } from 'yaml';
 import {
   carteDemoSchema,
@@ -16,6 +17,8 @@ import {
   scoresDemoSchema,
   scoresSchema,
 } from '../src/lib/schemas.ts';
+
+z.config(z.locales.fr());
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const erreurs = [];
@@ -106,20 +109,11 @@ for (const { chemin, courant } of courants) {
   }
 }
 
-// Catalogue de départ
+// Catalogue de départ (historique : le classeur data/source/ fait foi depuis la spec 05)
 
 const cheminCatalogue = join(racine, 'data', 'seed', 'courants-catalogue.json');
 const catalogue = charger(cheminCatalogue, catalogueSchema)?.courants ?? [];
 doublons(cheminCatalogue, catalogue.map((c) => c.id), 'courant');
-for (const c of catalogue) {
-  if (!idsFamilles.has(c.famille)) erreur(cheminCatalogue, `${c.id} : famille inconnue ${c.famille}`);
-  for (const l of c.lignees) if (!idsFamilles.has(l)) erreur(cheminCatalogue, `${c.id} : lignée inconnue ${l}`);
-  if (!idsCourants.has(c.id)) erreur(cheminCatalogue, `${c.id} : fiche absente (lancer npm run fiches)`);
-}
-const idsCatalogue = new Set(catalogue.map((c) => c.id));
-for (const id of idsCourants) {
-  if (!idsCatalogue.has(id)) avertissements.push(`src/content/courants/${id}.md : courant absent du catalogue`);
-}
 
 // Relations
 

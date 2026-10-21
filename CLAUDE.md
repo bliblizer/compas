@@ -17,7 +17,7 @@ Langue du site et de la documentation : **français**. Porteur du projet : Alexa
 
 - **Astro** (dernière version stable), TypeScript en mode strict, npm.
 - **Fiches de courants** : Markdown avec frontmatter, content collection `courants` dans `src/content/courants/`.
-- **Données structurées** : JSON dans `data/` (familles, modules, grilles, scores, relations, acteurs). Validation par schémas Zod.
+- **Données structurées** : saisies dans le classeur `data/source/compas-referentiel.xlsx`, qui fait foi, puis importées en JSON dans `data/` par `npm run import:excel` (grilles, scores, relations, en-tête des fiches). `familles.json` et `modules.json` restent saisis à la main. Validation par schémas Zod.
 - **Visualisations** : D3 v7, en TypeScript côté client, un composant Astro par visualisation. Pas de React ni de framework UI.
 - **Déploiement** : GitHub Pages via l'action officielle `withastro/action`. URL : `https://bliblizer.github.io/compas/` (donc `base: '/compas'`).
 - **Scripts de données** : Node (`scripts/*.mjs`) de préférence ; Python accepté pour la conversion des fichiers Excel.
@@ -59,13 +59,14 @@ scripts/                  conversions et contrôles de données
 | `docs/methode.md` | Pour tout calcul (projection, distances, couverture) et tout ce qui concerne les candidats |
 | `docs/design.md` | Avant de créer ou modifier un composant visuel |
 | `docs/roadmap.md` | Pour savoir où en est le projet |
+| `docs/redaction-fiches.md` | Avant de rédiger ou relire le corps d'une fiche |
 | `docs/specs/*.md` | La spec de l'itération en cours |
 
 ## Règles de travail
 
 1. **Une itération = une spec.** Lis la spec demandée et les documents qu'elle cite, propose un plan court, puis implémente. Si la spec contient des « Questions ouvertes » qui bloquent, pose-les avant de coder.
 2. **Ne jamais inventer de données de fond** : scores, dates, citations, sources, positions de partis ou de candidats, statistiques. Utilise des emplacements visibles `[À COMPLÉTER]` ou des données de `data/seed/` marquées `"demo": true`. Toute vue qui affiche des données de démonstration affiche le bandeau « Données de démonstration ».
-3. **Le référentiel `data/` est la seule source de vérité.** Les pages et visualisations lisent les données ; aucune valeur n'est codée en dur dans un composant.
+3. **Le référentiel `data/` est la seule source de vérité.** Les pages et visualisations lisent les données ; aucune valeur n'est codée en dur dans un composant. Les fichiers `data/relations.json`, `data/grilles/*.json`, `data/scores/*.json` et l'en-tête (frontmatter) des fiches sont **générés depuis le classeur Excel** : ne jamais les modifier à la main, corriger le classeur puis relancer `npm run import:excel`. Le corps rédigé des fiches s'écrit directement dans le Markdown (`docs/redaction-fiches.md`) ; l'import n'y touche jamais.
 4. **Consigne chaque décision technique durable** dans `docs/decisions.md` (date, décision, raison).
 5. **Avant de proposer un commit**, `npm run build` doit passer sans erreur.
 6. **Commits** petits et thématiques, messages en français à l'impératif (« Ajoute la page généalogie »). Ne pousse que lorsqu'Alexandre le demande.
@@ -96,9 +97,10 @@ npm run dev       # site local sur http://localhost:4321/compas/
 npm run build
 npm run preview
 npm run check:data  # valide data/ et les fiches (schémas, références croisées)
-npm run fiches      # crée les fiches manquantes depuis le catalogue (n'écrase rien)
+npm run import:excel             # importe le classeur Excel (rien n'est écrit en cas d'erreur)
+npm run import:excel -- --dry-run # valide le classeur et affiche le résumé sans rien écrire
 ```
 
 ## État actuel
 
-Itération 0 (initialisation) implémentée : projet Astro, déploiement GitHub Pages, gabarit et navigation, pages provisoires, schémas et contrôle des données (`npm run check:data`), 73 fiches générées (`npm run fiches`). Itération 1 (fiches courants, spec 03) implémentée : index filtrable, fiche en deux colonnes, radar D3 réutilisable (`<compas-radar>`) avec superposition, proximités. Prochaine étape : `docs/specs/01-carte.md` (itération 2).
+Itération 0 (initialisation) implémentée : projet Astro, déploiement GitHub Pages, gabarit et navigation, pages provisoires, schémas et contrôle des données (`npm run check:data`), 73 fiches générées. Itération 1 (fiches courants, spec 03) implémentée : index filtrable, fiche en deux colonnes, radar D3 réutilisable (`<compas-radar>`) avec superposition, proximités. Spec 05 (import Excel) implémentée : `npm run import:excel`. Prochaine étape : `docs/specs/01-carte.md` (itération 2).

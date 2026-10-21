@@ -77,6 +77,9 @@ const panneaux: Panneau[] = getGrilles().map((grille): Panneau => {
 });
 
 const initial = panneaux.find((p) => p.etat === 'radar') ?? panneaux.find((p) => p.etat !== 'bareme') ?? panneaux[0];
+/** Libellé d'axe : libellé court, sinon libellé complet, sinon identifiant tant que le libellé est à compléter. */
+const libelleAxe = (c: Grille['criteres'][number]) =>
+  c.libelleCourt ?? (c.libelle.startsWith('[À COMPLÉTER') ? c.id : c.libelle);
 const fr = (v: number) => v.toLocaleString('fr-FR', { maximumFractionDigits: 1 });
 /** JSON sûr dans une balise <script> (aucun « < » brut). */
 const jsonInline = (valeur: unknown) => JSON.stringify(valeur).replaceAll('<', '\\u003c');
@@ -121,7 +124,7 @@ const jsonInline = (valeur: unknown) => JSON.stringify(valeur).replaceAll('<', '
                 titre: `Radar des ${p.grille.criteres.length} critères de la grille ${p.grille.nom} : ${p.principale.nom} et courants superposés`,
                 axes: p.grille.criteres.map((c, i) => ({
                   id: c.id,
-                  libelle: c.libelleCourt ?? c.libelle,
+                  libelle: libelleAxe(c),
                   conteste: p.notes[i]?.conteste ?? false,
                 })),
                 series: [

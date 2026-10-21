@@ -1,6 +1,6 @@
 ---
 id: ecosocialisme
-nom: Écosocialisme
+nom: "Écosocialisme"
 alias: []
 famille: ecologismes
 lignees: [marxismes]

@@ -10,7 +10,9 @@ Courant × Critère ──> Score (couche doctrine / historique)
 Acteur (parti, candidat) × Critère ──> Position (sourcée, via correspondance)
 ```
 
-Tout est versionné dans le dépôt. Les schémas Zod vivent dans `src/lib/schemas.ts` (données JSON) et `src/content.config.ts` (collection `courants`). Un script `npm run check:data` valide l'ensemble et vérifie les références croisées (une relation pointe vers des courants existants, un score vers un critère existant…).
+Tout est versionné dans le dépôt. **Le classeur `data/source/compas-referentiel.xlsx` fait foi** pour les courants (en-tête des fiches), le tribunal, les relations, les thématiques, les critères et les scores : `npm run import:excel` génère à partir de lui `data/relations.json`, `data/grilles/*.json`, `data/scores/*.json` et l'en-tête des fiches (spec 05). Ces fichiers portent une note « Fichier généré » et ne se modifient pas à la main. `familles.json` et `modules.json` restent saisis à la main ; l'onglet `Listes` du classeur doit les refléter.
+
+Les schémas Zod vivent dans `src/lib/schemas.ts` (données JSON) et `src/content.config.ts` (collection `courants`). Un script `npm run check:data` valide l'ensemble et vérifie les références croisées (une relation pointe vers des courants existants, un score vers un critère existant…).
 
 ## Familles — `data/familles.json`
 
@@ -65,7 +67,7 @@ sources: []
 
 Les cinq parties fixes de la fiche sont : **carte d'identité** (générée depuis le frontmatter), **définition**, **principes fondamentaux**, **arbre généalogique** (généré depuis `relations.json`), **tribunal des idées reçues** (généré depuis `tribunal`). Style : neutre, pas de listes imbriquées.
 
-Le catalogue `data/seed/courants-catalogue.json` sert à générer les fichiers vides (`statut: a_rediger`).
+Le catalogue `data/seed/courants-catalogue.json` est l'historique du catalogue de départ ; les courants se gèrent désormais dans l'onglet `Courants` du classeur, et l'import crée les fiches manquantes.
 
 ## Relations — `data/relations.json`
 
@@ -89,7 +91,7 @@ Le catalogue `data/seed/courants-catalogue.json` sert à générer les fichiers 
   ]}
 ```
 
-`libelleCourt` (facultatif, 24 caractères au plus) est le libellé affiché sur les axes des radars ; le tableau de données affiche `libelle`.
+`libelleCourt` (facultatif, 24 caractères au plus, colonne `libelle_court` de l'onglet `Criteres`) est le libellé affiché sur les axes des radars ; le tableau de données affiche `libelle`. Sans libellé court ni libellé, l'axe affiche l'identifiant du critère.
 
 ## Scores — `data/scores/<courant>.json`
 
