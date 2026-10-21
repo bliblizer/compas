@@ -1,0 +1,39 @@
+---
+import { liensPied } from '../lib/site';
+---
+
+<footer class="pied">
+  <nav class="conteneur" aria-label="Liens de pied de page">
+    <ul class="pied__liens">
+      {
+        liensPied.map((l) => (
+          <li>
+            <a href={l.href}>{l.libelle}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</footer>
+
+<style>
+  .pied {
+    border-top: 1px solid var(--c-ligne);
+  }
+
+  .pied__liens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+    margin: 0;
+    padding: 12px 0;
+    list-style: none;
+    font-size: 14px;
+  }
+
+  .pied__liens a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

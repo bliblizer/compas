@@ -6,7 +6,7 @@ Principe : une URL en ligne dès la première itération, puis une brique à la 
 
 | # | Itération | Spec | Contenu | Statut |
 |---|---|---|---|---|
-| 0 | Initialisation | `00-initialisation.md` | Astro, déploiement Pages, gabarit, pages vides, chargement et validation des données, fiches vides générées | À faire |
+| 0 | Initialisation | `00-initialisation.md` | Astro, déploiement Pages, gabarit, pages vides, chargement et validation des données, fiches vides générées | Fait (déploiement à activer) |
 | 1 | Fiches courants | `03-fiche.md` | Index des courants, page fiche, radar par grille avec superposition | À faire |
 | 2 | Carte doctrinale | `01-carte.md` | Carte en mode démo, puis projection ACP dès que les données le permettent | À faire |
 | 3 | Généalogie | `02-genealogie.md` | Frise par familles depuis `relations.json` | À faire |

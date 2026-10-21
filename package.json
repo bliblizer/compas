@@ -1,0 +1,28 @@
+{
+  "name": "compas",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check:data": "node scripts/verifier-donnees.mjs",
+    "fiches": "node scripts/generer-fiches.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.4.2",
+    "d3": "^7.9.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/d3": "^7.4.3",
+    "typescript": "^6.0.3"
+  }
+}

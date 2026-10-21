@@ -95,8 +95,10 @@ npm install
 npm run dev       # site local sur http://localhost:4321/compas/
 npm run build
 npm run preview
+npm run check:data  # valide data/ et les fiches (schémas, références croisées)
+npm run fiches      # crée les fiches manquantes depuis le catalogue (n'écrase rien)
 ```
 
 ## État actuel
 
-Dépôt initialisé avec la documentation et les données de départ. Prochaine étape : `docs/specs/00-initialisation.md`.
+Itération 0 (initialisation) implémentée : projet Astro, déploiement GitHub Pages, gabarit et navigation, pages provisoires, schémas et contrôle des données (`npm run check:data`), 73 fiches générées (`npm run fiches`). Prochaine étape : `docs/specs/03-fiche.md` (itération 1).

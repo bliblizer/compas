@@ -1,0 +1,23 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout titre="Généalogie">
+  <PageIntro surtitre="Généalogie · 1760 – aujourd’hui" titre={'D’où viennent les idées ?'}>
+    Chaque couloir est une famille-racine. Les liens traversent les familles&nbsp;: un courant peut avoir plusieurs
+    parents, et certaines filiations relèvent de la synthèse plutôt que de la descendance directe.
+  </PageIntro>
+
+  <section class="conteneur section">
+    <div class="bloc bloc--alt">
+      <p class="libelle-mono">Frise à venir</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: 8px 56px;
+  }
+</style>

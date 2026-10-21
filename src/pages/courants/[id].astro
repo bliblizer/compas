@@ -1,0 +1,101 @@
+---
+import { getCollection } from 'astro:content';
+import PastilleFamille from '../../components/PastilleFamille.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getFamille, libellesStatut } from '../../lib/data';
+import type { Courant } from '../../lib/schemas';
+import { lien } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const courants = await getCollection('courants');
+  return courants.map((c) => ({ params: { id: c.data.id }, props: { courant: c.data } }));
+}
+
+interface Props {
+  courant: Courant;
+}
+
+const { courant } = Astro.props;
+const famille = getFamille(courant.famille);
+if (!famille) throw new Error(`Famille inconnue pour ${courant.id} : ${courant.famille}`);
+---
+
+<BaseLayout titre={courant.nom}>
+  <div class="conteneur fiche">
+    <nav aria-label="Fil d’Ariane" class="ariane">
+      <a href={lien('courants/')}>Courants</a>
+      <span aria-hidden="true">/</span>
+      <span>{famille.nom}</span>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{courant.nom}</span>
+    </nav>
+
+    <h1>{courant.nom}</h1>
+
+    <dl class="identite">
+      <div>
+        <dt class="libelle-mono">Famille</dt>
+        <dd><PastilleFamille famille={famille} /></dd>
+      </div>
+      <div>
+        <dt class="libelle-mono">Statut</dt>
+        <dd>{libellesStatut[courant.statut]}</dd>
+      </div>
+    </dl>
+
+    <div class="bloc bloc--alt">
+      <p class="libelle-mono">Fiche à venir</p>
+      <p>La fiche complète de ce courant sera publiée dans une prochaine étape.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .fiche {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-block: 32px 56px;
+  }
+
+  .ariane {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--c-texte-3);
+  }
+
+  .ariane a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .identite {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 40px;
+    margin: 0;
+  }
+
+  .identite div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .identite dd {
+    margin: 0;
+  }
+
+  .bloc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+    color: var(--c-texte-2);
+  }
+</style>

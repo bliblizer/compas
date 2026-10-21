@@ -1,0 +1,54 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Plan repris de docs/methode.md (section « Pourquoi le débat est-il si resserré ? »).
+const plan = [
+  'Le constat, chiffré par l’Observatoire',
+  'Les contraintes institutionnelles',
+  'La logique électorale et l’électeur médian',
+  'Les partis comme coalitions',
+  'Le rejet de certaines idées à cause de leur bilan historique',
+  'Ce que l’écart dit, et ce qu’il ne dit pas',
+];
+---
+
+<BaseLayout titre={'Pourquoi le débat est-il si resserré ?'}>
+  <PageIntro surtitre="Explication" titre={'Pourquoi le débat est-il si resserré ?'} />
+
+  <div class="conteneur corps">
+    {
+      plan.map((titre, i) => (
+        <section class="section">
+          <h2>
+            <span class="numero">{String(i + 1).padStart(2, '0')}</span> {titre}
+          </h2>
+          <p class="a-completer">[À COMPLÉTER]</p>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .corps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 8px 56px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 760px;
+  }
+
+  .numero {
+    font-family: var(--f-mono);
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--c-texte-3);
+  }
+</style>

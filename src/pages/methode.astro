@@ -1,0 +1,94 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { lien } from '../lib/site';
+
+// Plan repris de docs/methode.md ; le texte grand public reste à rédiger.
+const sections = [
+  { id: 'notation', titre: 'Notation des courants' },
+  { id: 'pieges', titre: 'Les principaux pièges' },
+  {
+    id: 'calculs',
+    titre: 'Calculs',
+    sousSections: ['Projection de la carte', 'Proximité entre courants', 'Statistiques de l’Observatoire'],
+  },
+  { id: 'placement', titre: 'Placement des partis et candidats' },
+  { id: 'inclusion', titre: 'Critère d’inclusion et exhaustivité' },
+  { id: 'sources', titre: 'Sources' },
+  { id: 'limites', titre: 'Limites' },
+];
+---
+
+<BaseLayout titre="Méthode">
+  <PageIntro surtitre="Méthode et barèmes" titre="Méthode">
+    Les règles de rigueur du projet&nbsp;: barèmes publiés, notes justifiées et sourcées, calculs reproductibles.
+  </PageIntro>
+
+  <div class="conteneur corps">
+    <nav class="bloc bloc--alt sommaire" aria-labelledby="sommaire-titre">
+      <p id="sommaire-titre" class="libelle-mono">Sommaire</p>
+      <ol>
+        {
+          sections.map((s) => (
+            <li>
+              <a href={`#${s.id}`}>{s.titre}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    {
+      sections.map((s) => (
+        <section id={s.id} class="section">
+          <h2>{s.titre}</h2>
+          {s.sousSections ? (
+            s.sousSections.map((titre) => (
+              <>
+                <h3>{titre}</h3>
+                <p class="a-completer">[À COMPLÉTER]</p>
+              </>
+            ))
+          ) : (
+            <p class="a-completer">[À COMPLÉTER]</p>
+          )}
+        </section>
+      ))
+    }
+
+    <p class="renvoi">
+      Voir aussi&nbsp;: <a href={lien('pourquoi/')}>Pourquoi le débat est-il si resserré&nbsp;?</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .corps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 8px 56px;
+  }
+
+  .sommaire {
+    max-width: 760px;
+  }
+
+  .sommaire ol {
+    margin: 10px 0 0;
+    padding-left: 22px;
+    line-height: 2;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 760px;
+    scroll-margin-top: 16px;
+  }
+
+  .renvoi {
+    color: var(--c-texte-2);
+  }
+</style>

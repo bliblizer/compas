@@ -1,0 +1,34 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { lien } from '../lib/site';
+---
+
+<BaseLayout titre="Candidats face au spectre">
+  <PageIntro surtitre="Candidats face au spectre" titre={'Les candidats occupent-ils tout l’espace des idées ?'}>
+    Chaque ligne est une grille thématique. Les traits gris marquent la position de chaque courant recensé, les
+    pastilles celle des candidats, sur le même barème. Leurs positions proviennent de jeux de données publiés, jamais
+    d’une notation par ce site.
+  </PageIntro>
+
+  <section class="conteneur section">
+    <div class="bloc bloc--alt">
+      <p class="libelle-mono">Observatoire à venir</p>
+      <p>Voir la <a href={lien('methode/#placement')}>méthode de placement des partis et candidats</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: 8px 56px;
+  }
+
+  .bloc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+    color: var(--c-texte-2);
+  }
+</style>

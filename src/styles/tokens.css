@@ -1,0 +1,29 @@
+/* Design tokens — voir docs/design.md */
+:root {
+  /* Couleurs d'interface */
+  --c-fond: #FFFFFF;
+  --c-fond-alt: #F5F6F8;
+  --c-fond-zebre: #F7F8FA;
+  --c-encre: #15171C;
+  --c-texte: #2B2F36;
+  --c-texte-2: #3A3F47;
+  --c-texte-3: #4A5060;      /* libellés secondaires, ≥ 4.5:1 sur blanc */
+  --c-bord: #DADDE3;
+  --c-bord-2: #CDD1D8;
+  --c-ligne: #E3E5E9;
+  --c-accent: #1F3A93;
+  --c-accent-hover: #132560;
+  --c-accent-doux: #EDF0FA;
+  --c-trait-courant: #8A909B;
+  --c-verdict-fond: #FCEFD9;
+  --c-verdict-texte: #7A4A00;
+
+  /* Typographie */
+  --f-titre: 'Space Grotesk', system-ui, sans-serif;
+  --f-texte: 'IBM Plex Sans', system-ui, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Rayons, largeur */
+  --r-s: 8px;  --r-m: 12px;  --r-pill: 999px;
+  --largeur-max: 1320px;
+}

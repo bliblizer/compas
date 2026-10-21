@@ -1,0 +1,40 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { lien, nomSite } from '../lib/site';
+---
+
+<BaseLayout titre={nomSite} description="Carte des idées politiques, des plus étudiées aux plus marginales.">
+  <PageIntro
+    surtitre="Carte doctrinale · Projection des 10 grilles thématiques"
+    titre="Le spectre des idées politiques est bien plus large que le débat public."
+  >
+    Chaque point est un courant de pensée, des plus étudiés aux plus marginaux. Leur position n’est pas décidée à
+    la main&nbsp;: elle découle de leurs réponses notées sur dix grilles thématiques.
+  </PageIntro>
+
+  <section class="conteneur section">
+    <div class="bloc bloc--alt a-venir">
+      <p class="libelle-mono">Carte à venir</p>
+      <p>
+        La carte interactive des courants sera publiée dans une prochaine étape. En attendant, parcourez
+        l’<a href={lien('courants/')}>index des courants</a> ou lisez
+        <a href={lien('pourquoi/')}>pourquoi le débat est si resserré</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: 8px 56px;
+  }
+
+  .a-venir {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+    color: var(--c-texte-2);
+  }
+</style>

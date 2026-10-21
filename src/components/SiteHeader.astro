@@ -1,0 +1,145 @@
+---
+import { getFamille } from '../lib/data';
+import { lien, navigation, nomSite } from '../lib/site';
+
+// Les trois points du logo reprennent les couleurs de familles de la maquette.
+const pointsLogo = [
+  { cx: 9, cy: 10, famille: 'marxismes' },
+  { cx: 18, cy: 9, famille: 'liberalismes' },
+  { cx: 13, cy: 19, famille: 'ecologismes' },
+].map((p) => ({ ...p, couleur: getFamille(p.famille)?.couleur ?? 'var(--c-encre)' }));
+
+const cheminCourant = Astro.url.pathname;
+
+function etatLien(chemin: string): 'page' | 'true' | undefined {
+  const href = lien(chemin);
+  if (cheminCourant === href) return 'page';
+  if (chemin !== '' && cheminCourant.startsWith(href)) return 'true';
+  return undefined;
+}
+---
+
+<header class="entete">
+  <div class="conteneur entete__barre">
+    <a class="entete__logo" href={lien()}>
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="12.5" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+        {pointsLogo.map((p) => <circle cx={p.cx} cy={p.cy} r="2.5" fill={p.couleur} />)}
+      </svg>
+      <span>{nomSite}</span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="entete__nav">
+        {
+          navigation.map((item) => (
+            <li>
+              <a href={lien(item.chemin)} aria-current={etatLien(item.chemin)}>
+                {item.libelle}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="entete__recherche">
+      <label for="recherche" class="sr-only">Rechercher un courant ou un penseur (bientôt disponible)</label>
+      <input id="recherche" type="search" placeholder="Rechercher un courant, un penseur…" disabled />
+    </div>
+  </div>
+</header>
+
+<style>
+  .entete {
+    border-bottom: 1px solid var(--c-ligne);
+    background: var(--c-fond);
+  }
+
+  .entete__barre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 36px;
+    padding-block: 14px;
+  }
+
+  .entete__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: var(--c-encre);
+    text-decoration: none;
+    font-family: var(--f-titre);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .entete__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .entete__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: var(--r-s);
+    color: var(--c-texte-2);
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .entete__nav a:hover {
+    color: var(--c-accent);
+  }
+
+  .entete__nav a[aria-current] {
+    background: var(--c-accent-doux);
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+
+  .entete__recherche {
+    margin-left: auto;
+    flex: 0 1 300px;
+    min-width: 200px;
+  }
+
+  .entete__recherche input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-s);
+    background: var(--c-fond-zebre);
+    color: var(--c-encre);
+    font-family: var(--f-texte);
+    font-size: 15px;
+  }
+
+  .entete__recherche input:disabled {
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 640px) {
+    .entete__barre {
+      gap: 8px;
+    }
+
+    .entete__nav a {
+      padding: 0 10px;
+    }
+
+    .entete__recherche {
+      flex: 1 1 100%;
+      margin-left: 0;
+    }
+  }
+</style>

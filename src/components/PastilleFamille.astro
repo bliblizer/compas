@@ -1,0 +1,36 @@
+---
+import type { Famille } from '../lib/schemas';
+
+interface Props {
+  famille: Famille;
+}
+
+const { famille } = Astro.props;
+---
+
+<span class="pastille">
+  <span class="pastille__point" style={`background: ${famille.couleur}`} aria-hidden="true"></span>
+  {famille.nom}
+</span>
+
+<style>
+  .pastille {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-pill);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c-encre);
+    background: var(--c-fond);
+  }
+
+  .pastille__point {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex: none;
+  }
+</style>

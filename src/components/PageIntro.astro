@@ -1,0 +1,50 @@
+---
+interface Props {
+  surtitre: string;
+  titre: string;
+}
+
+const { surtitre, titre } = Astro.props;
+---
+
+<section class="conteneur intro">
+  <p class="libelle-mono">{surtitre}</p>
+  <h1>{titre}</h1>
+  {
+    Astro.slots.has('default') && (
+      <p class="intro__chapo">
+        <slot />
+      </p>
+    )
+  }
+</section>
+
+<style>
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 48px 24px;
+  }
+
+  h1 {
+    max-width: 900px;
+  }
+
+  .intro__chapo {
+    max-width: 760px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--c-texte-2);
+  }
+
+  @media (max-width: 640px) {
+    .intro {
+      padding-block: 32px 16px;
+    }
+
+    .intro__chapo {
+      font-size: 16px;
+    }
+  }
+</style>
