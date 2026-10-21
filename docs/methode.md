@@ -52,6 +52,14 @@ Le message « l'offre électorale couvre X % de l'espace des idées » est très
 - Chaque position affichée renvoie à sa source et, quand c'est possible, à l'extrait de programme.
 - Tant que les données réelles ne sont pas importées, l'Observatoire n'affiche que des acteurs **anonymes** de démonstration (A, B, C, D). Aucun nom réel n'est associé à une position inventée.
 
+## Sources
+
+La page Méthode publie une section « Sources » en trois parties :
+
+1. **Sources de la taxonomie** : les ouvrages de référence utilisés pour délimiter les familles et viser l'exhaustivité (Andrew Heywood, *Political Ideologies* ; travaux de Michael Freeden ; dictionnaires de philosophie politique), complétés au fil de la saturation.
+2. **Sources des données d'acteurs** : Chapel Hill Expert Survey, Manifesto Project, boussoles électorales du Cevipof, V-Party le cas échéant, avec pour chacun la version utilisée, la date d'import et sa licence de réutilisation.
+3. **Sources par courant** : elles ne sont pas listées sur cette page ; chaque fiche publie les siennes (champ `sources` du frontmatter et sources de chaque score).
+
 ## Critère d'inclusion et exhaustivité
 
 Voir `taxonomie.md` : corpus identifiable, penseur ou texte de référence, désignation stable ; exhaustivité visée par saturation des sources.

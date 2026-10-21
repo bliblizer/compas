@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Atlas des idéologies — Candidats face au spectre</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F3A93}a:hover{color:#132560}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #15171C; background: #FFFFFF">
+
+<header style="border-bottom: 1px solid #E3E5E9; background: #FFFFFF">
+<div style="max-width: 1320px; margin: 0 auto; padding: 14px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 36px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #15171C; min-height: 44px">
+<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#15171C" stroke-width="1.5"></circle><circle cx="9" cy="10" r="2.5" fill="#B3263E"></circle><circle cx="18" cy="9" r="2.5" fill="#C9940A"></circle><circle cx="13" cy="19" r="2.5" fill="#2E8B57"></circle></svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em">Atlas des idéologies</span>
+</a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Carte</a>
+<a href="Genealogie.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Généalogie</a>
+<a href="Fiche.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Courants</a>
+<a href="Candidats.dc.html" aria-current="page" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; color: #1F3A93; background: #EDF0FA">Candidats</a>
+<a href="Main.dc.html#methode" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Méthode</a>
+</nav>
+<div style="margin-left: auto; flex: 0 1 300px; min-width: 200px">
+<label for="recherche-c" class="sr">Rechercher un courant ou un penseur</label>
+<input id="recherche-c" type="search" placeholder="Rechercher un courant, un penseur…" style="width: 100%; box-sizing: border-box; height: 44px; padding: 0 14px; border: 1px solid #CDD1D8; border-radius: 8px; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; color: #15171C; background: #F7F8FA">
+</div>
+</div>
+</header>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 48px 32px 24px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.06em; color: #4A5060">CANDIDATS FACE AU SPECTRE</p>
+<h1 style="margin: 0; max-width: 900px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em">Les candidats occupent-ils tout l'espace des idées ?</h1>
+<p style="margin: 0; max-width: 760px; font-size: 18px; line-height: 1.55; color: #3A3F47">Chaque ligne est une grille thématique. Les traits gris marquent la position de chaque courant recensé, les pastilles celle des candidats. Leurs positions proviennent de jeux de données publiés, jamais d’une notation par ce site.</p>
+</section>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 0 32px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
+<div style="display: flex; align-items: center; gap: 10px">
+<label for="scrutin" style="font-size: 15px; font-weight: 500">Scrutin</label>
+<select id="scrutin" style="height: 44px; padding: 0 12px; border: 1px solid #CDD1D8; border-radius: 8px; background: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; color: #15171C">
+<option>[Élection à choisir]</option>
+</select>
+</div>
+<div role="group" aria-label="Mettre en avant un candidat" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="5">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid {{c.bd}}; border-radius: 999px; background: {{c.bg}}; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 500; color: #15171C; cursor: pointer">
+<span style="width: 12px; height: 12px; border-radius: 50%; background: {{c.color}}"></span>{{c.name}}
+</button>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Positions par grille" style="max-width: 1320px; margin: 0 auto; padding: 0 32px 24px">
+<div style="border: 1px solid #DADDE3; border-radius: 12px; overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding: 14px 20px; border-bottom: 1px solid #E3E5E9; background: #F7F8FA; font-size: 13px; color: #3A3F47">
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 2px; height: 14px; background: #8A909B"></span>un courant recensé</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 28px; height: 12px; border-radius: 4px; background: rgba(31,58,147,0.14)"></span>étendue couverte par les candidats</span>
+<span style="margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5060">Données de maquette</span>
+</div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding: 14px 20px; border-bottom: 1px solid #EEF0F3">
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 600; font-size: 15px">{{r.name}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5060">{{r.cover}}</span>
+</div>
+<div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="position: relative; height: 44px">
+<div style="position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #CDD1D8"></div>
+<div style="position: absolute; top: 5px; height: 34px; left: {{r.bandL}}%; width: {{r.bandW}}%; border-radius: 6px; background: rgba(31,58,147,0.14)"></div>
+<sc-for list="{{r.ticks}}" as="t" hint-placeholder-count="20">
+<div style="position: absolute; top: 50%; left: {{t.x}}%; width: 2px; height: 16px; transform: translate(-1px, -50%); background: #8A909B"></div>
+</sc-for>
+<sc-for list="{{r.cands}}" as="c" hint-placeholder-count="4">
+<span style="position: absolute; top: 50%; left: {{c.x}}%; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%; border: 2px solid #FFFFFF; background: {{c.color}}; color: {{c.fg}}; opacity: {{c.op}}; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700">{{c.letter}}</span>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5060">
+<span>{{r.left}}</span><span>{{r.right}}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 8px 32px 56px; display: flex; flex-wrap: wrap; gap: 24px">
+<div style="flex: 1 1 280px; border: 1px solid #DADDE3; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #4A5060">ESPACE COUVERT</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 40px">[xx %]</span>
+<span style="font-size: 15px; line-height: 1.5; color: #3A3F47">de l'étendue des courants, en moyenne sur les dix grilles.</span>
+</div>
+<div style="flex: 1 1 280px; border: 1px solid #DADDE3; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #4A5060">COURANTS ORPHELINS</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 40px">[N]</span>
+<span style="font-size: 15px; line-height: 1.5; color: #3A3F47">courants sans aucun candidat à proximité.</span>
+</div>
+<div style="flex: 2 1 420px; border: 1px solid #DADDE3; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px; background: #F5F6F8">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #4A5060">MÉTHODE DE PLACEMENT</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3A3F47">Les positions viennent de jeux de données académiques publiés (Chapel Hill Expert Survey, Manifesto Project, boussoles du Cevipof), converties vers les critères du site par une table de correspondance documentée. Chaque position renvoie à sa source.</p>
+<a href="Main.dc.html#methode" style="font-size: 15px; font-weight: 500">Lire la méthode complète</a>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E3E5E9">
+<div style="max-width: 1320px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px">
+<a href="Main.dc.html#methode">Méthode et barèmes</a>
+<a href="Main.dc.html#methode">Critères d'inclusion</a>
+<a href="Main.dc.html#methode">Sources</a>
+<a href="Main.dc.html#methode">Signaler une erreur</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { focus: 'all' };
+  }
+  renderVals() {
+    const s = this.state;
+    const cands = [
+      { k: 'A', name: 'Candidat·e A', color: '#1F3A93', fg: '#FFFFFF' },
+      { k: 'B', name: 'Candidat·e B', color: '#E8902A', fg: '#15171C' },
+      { k: 'C', name: 'Candidat·e C', color: '#23744A', fg: '#FFFFFF' },
+      { k: 'D', name: 'Candidat·e D', color: '#7A3FB0', fg: '#FFFFFF' }
+    ];
+    const chipDefs = [{ k: 'all', name: 'Tous les candidats', color: '#CDD1D8' }].concat(cands);
+    const chips = chipDefs.map((c) => {
+      const on = s.focus === c.k;
+      return { name: c.name, color: c.color, on: on ? 'true' : 'false', bg: on ? '#EDF0FA' : '#FFFFFF', bd: on ? '#1F3A93' : '#CDD1D8', pick: () => this.setState({ focus: c.k }) };
+    });
+    const grids = [
+      ['Économie', 'Planifié', 'Marchand'],
+      ['État et pouvoir', 'Sans État', 'État total'],
+      ['Individu et société', 'Primauté du collectif', 'Primauté de l\u2019individu'],
+      ['Temps et changement', 'Restauration', 'Rupture'],
+      ['Nation et identité', 'Universalisme', 'Primauté nationale'],
+      ['Épistémologie', 'Tradition, révélation', 'Raison critique'],
+      ['Écologie', 'Productivisme', 'Primauté du vivant'],
+      ['Violence', 'Non-violence', 'Violence légitimée'],
+      ['Religion et morale', 'Sécularisme', 'Norme religieuse'],
+      ['Genre, famille, mœurs', 'Ordre traditionnel', 'Égalité, libre choix']
+    ];
+    const rows = grids.map((g, row) => {
+      const ticks = [];
+      for (let i = 0; i < 34; i++) {
+        const v = ((i * 37 + row * 11) % 97) / 97 * 9.6 + 0.2;
+        ticks.push({ x: (v * 10).toFixed(1) });
+      }
+      const vals = [
+        4 + ((row * 3) % 5) * 0.3,
+        5.5 + ((row * 7) % 4) * 0.35,
+        3.2 + ((row * 5) % 6) * 0.4,
+        6.2 + ((row * 2) % 5) * 0.3
+      ];
+      const lo = Math.min.apply(null, vals) - 0.25;
+      const hi = Math.max.apply(null, vals) + 0.25;
+      return {
+        name: g[0], left: g[1], right: g[2],
+        cover: 'Couverture : [xx %]',
+        ticks: ticks,
+        bandL: (lo * 10).toFixed(1), bandW: ((hi - lo) * 10).toFixed(1),
+        cands: cands.map((c, i) => ({
+          letter: c.k, color: c.color, fg: c.fg,
+          x: (vals[i] * 10).toFixed(1),
+          op: s.focus === 'all' || s.focus === c.k ? 1 : 0.25
+        }))
+      };
+    });
+    return { chips: chips, rows: rows };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Atlas des idéologies — Généalogie</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F3A93}a:hover{color:#132560}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #15171C; background: #FFFFFF">
+
+<header style="border-bottom: 1px solid #E3E5E9; background: #FFFFFF">
+<div style="max-width: 1320px; margin: 0 auto; padding: 14px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 36px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #15171C; min-height: 44px">
+<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#15171C" stroke-width="1.5"></circle><circle cx="9" cy="10" r="2.5" fill="#B3263E"></circle><circle cx="18" cy="9" r="2.5" fill="#C9940A"></circle><circle cx="13" cy="19" r="2.5" fill="#2E8B57"></circle></svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em">Atlas des idéologies</span>
+</a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Carte</a>
+<a href="Genealogie.dc.html" aria-current="page" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; color: #1F3A93; background: #EDF0FA">Généalogie</a>
+<a href="Fiche.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Courants</a>
+<a href="Candidats.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Candidats</a>
+<a href="Main.dc.html#methode" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; color: #3A3F47">Méthode</a>
+</nav>
+<div style="margin-left: auto; flex: 0 1 300px; min-width: 200px">
+<label for="recherche-g" class="sr">Rechercher un courant ou un penseur</label>
+<input id="recherche-g" type="search" placeholder="Rechercher un courant, un penseur…" style="width: 100%; box-sizing: border-box; height: 44px; padding: 0 14px; border: 1px solid #CDD1D8; border-radius: 8px; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; color: #15171C; background: #F7F8FA">
+</div>
+</div>
+</header>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 48px 32px 24px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.06em; color: #4A5060">GÉNÉALOGIE · 1760 – AUJOURD'HUI</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em">D'où viennent les idées ?</h1>
+<p style="margin: 0; max-width: 760px; font-size: 18px; line-height: 1.55; color: #3A3F47">Chaque couloir est une famille-racine. Les liens traversent les familles : un courant peut avoir plusieurs parents, et certaines filiations relèvent de la synthèse plutôt que de la descendance directe.</p>
+</section>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 0 32px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px">
+<div style="display: flex; align-items: center; gap: 10px">
+<label for="periode" style="font-size: 15px; font-weight: 500">Période</label>
+<select id="periode" style="height: 44px; padding: 0 12px; border: 1px solid #CDD1D8; border-radius: 8px; background: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; color: #15171C">
+<option>1760 – aujourd'hui</option>
+<option>XIXe siècle</option>
+<option>XXe siècle</option>
+<option>Depuis 1945</option>
+</select>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-size: 14px; color: #3A3F47">
+<span style="display: flex; align-items: center; gap: 8px"><svg width="36" height="10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="#7A808C" stroke-width="1.5"></line></svg>dérive de</span>
+<span style="display: flex; align-items: center; gap: 8px"><svg width="36" height="10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="#7A808C" stroke-width="1.5" stroke-dasharray="5 4"></line></svg>synthèse ou influence</span>
+<span style="display: flex; align-items: center; gap: 8px"><svg width="36" height="10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="#1F3A93" stroke-width="3"></line></svg>lignée du courant sélectionné</span>
+</div>
+<span style="margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5060">Dates : texte ou mouvement fondateur, à sourcer par fiche</span>
+</section>
+
+<section aria-label="Frise généalogique" style="max-width: 1320px; margin: 0 auto; padding: 0 32px 32px">
+<div style="overflow-x: auto; border: 1px solid #DADDE3; border-radius: 12px">
+<div style="min-width: 1180px; display: grid; grid-template-columns: 210px minmax(0, 1fr)">
+
+<div style="height: 40px; border-bottom: 1px solid #E3E5E9; border-right: 1px solid #E3E5E9; background: #FFFFFF"></div>
+<div style="position: relative; height: 40px; border-bottom: 1px solid #E3E5E9; background: #FFFFFF">
+<sc-for list="{{ticks}}" as="t" hint-placeholder-count="11">
+<span style="position: absolute; left: {{t.x}}%; top: 12px; transform: translateX(-50%); font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5060">{{t.label}}</span>
+</sc-for>
+</div>
+
+<div style="border-right: 1px solid #E3E5E9">
+<sc-for list="{{lanes}}" as="l" hint-placeholder-count="14">
+<div style="height: 72px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; gap: 10px; background: {{l.bg}}; font-size: 14px; font-weight: 500">
+<span style="width: 12px; height: 12px; border-radius: 50%; flex: none; background: {{l.color}}"></span>{{l.name}}
+</div>
+</sc-for>
+</div>
+
+<div style="position: relative; height: 1008px; overflow: hidden">
+<sc-for list="{{lanes}}" as="l" hint-placeholder-count="14">
+<div style="position: absolute; left: 0; right: 0; top: {{l.top}}px; height: 72px; background: {{l.bg}}"></div>
+</sc-for>
+<sc-for list="{{ticks}}" as="t" hint-placeholder-count="11">
+<div style="position: absolute; top: 0; bottom: 0; left: {{t.x}}%; width: 1px; background: #E6E8EC"></div>
+</sc-for>
+<svg viewBox="0 0 1000 1008" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 1008px">
+<path d="{{derivePath}}" fill="none" stroke="#7A808C" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+<path d="{{synthPath}}" fill="none" stroke="#7A808C" stroke-width="1.5" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"></path>
+<path d="{{hlPath}}" fill="none" stroke="#1F3A93" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+</svg>
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="20">
+<a href="Fiche.dc.html" style="position: absolute; left: {{n.x}}%; top: {{n.y}}px; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border: {{n.border}}; border-radius: 999px; background: {{n.bg}}; color: {{n.fg}}; font-size: 12px; font-weight: {{n.weight}}; line-height: 16px; white-space: nowrap; text-decoration: none">{{n.name}}<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: 0.8">{{n.year}}</span></a>
+</sc-for>
+</div>
+
+</div>
+</div>
+</section>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 8px 32px 56px; display: flex; flex-wrap: wrap; gap: 24px">
+<div style="flex: 2 1 520px; border: 1px solid #DADDE3; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #4A5060">LIGNÉE SÉLECTIONNÉE</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 28px">Écosocialisme</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3A3F47">Dérive de l'environnementalisme et procède d'une synthèse avec le marxisme. Il dialogue avec la décroissance et l'écologie sociale, sans s'y confondre.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px">
+<a href="Fiche.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 8px; background: #1F3A93; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none">Ouvrir la fiche</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #CDD1D8; border-radius: 8px; color: #15171C; font-weight: 500; font-size: 15px; text-decoration: none">Voir sur la carte</a>
+</div>
+</div>
+<div style="flex: 1 1 320px; border: 1px solid #DADDE3; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px; background: #F5F6F8">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #4A5060">TYPES DE RELATIONS</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3A3F47">Dérive de · Synthèse de · Rupture avec · S'oppose à. Chaque lien est daté et renvoie à sa source dans la fiche du courant.</p>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E3E5E9">
+<div style="max-width: 1320px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px">
+<a href="Main.dc.html#methode">Méthode et barèmes</a>
+<a href="Main.dc.html#methode">Critères d'inclusion</a>
+<a href="Main.dc.html#methode">Sources</a>
+<a href="Main.dc.html#methode">Signaler une erreur</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1720}}'>
+class Component extends DCLogic {
+  data() {
+    const lanes = [
+      ['Libéralismes', '#C9940A'], ['Républicanismes', '#2F6DB5'], ['Socialismes', '#E07A5F'],
+      ['Marxismes', '#B3263E'], ['Anarchismes', '#2B2B2B'], ['Conservatismes', '#5B4BA0'],
+      ['Traditionalismes et réaction', '#8A6A43'], ['Fascismes', '#5E6B2F'], ['Autoritarismes', '#8A9099'],
+      ['Écologismes', '#2E8B57'], ['Émancipations', '#C2499A'], ['Anticolonialismes', '#E8902A'],
+      ['Politiques religieuses', '#5FA8C8'], ['Technopolitiques', '#16A2A2']
+    ];
+    const nodes = [
+      ['libclass', 'Libéralisme classique', 1776, 0, -22], ['georg', 'Géorgisme', 1879, 0, 22], ['soclib', 'Social-libéralisme', 1911, 0, -22],
+      ['ordo', 'Ordolibéralisme', 1937, 0, 22], ['neolib', 'Néolibéralisme', 1947, 0, 0], ['libert', 'Libertarianisme', 1974, 0, -22],
+      ['jacob', 'Jacobinisme', 1793, 1, -22], ['radic', 'Radicalisme', 1901, 1, 22], ['laic', 'Laïcisme', 1905, 1, -22], ['neorep', 'Néo-républicanisme', 1997, 1, 0],
+      ['utop', 'Socialisme utopique', 1820, 2, -22], ['coop', 'Coopératisme', 1844, 2, 22], ['socdem', 'Social-démocratie', 1875, 2, 0],
+      ['distrib', 'Distributisme', 1912, 2, 22], ['socdemo', 'Socialisme démocratique', 1951, 2, -22],
+      ['marx', 'Marxisme', 1848, 3, 0], ['lenin', 'Léninisme', 1902, 3, -22], ['conseil', 'Conseillisme', 1920, 3, 22], ['trotsk', 'Trotskysme', 1928, 3, 0],
+      ['mao', 'Maoïsme', 1949, 3, -22], ['posad', 'Posadisme', 1962, 3, 22], ['euroc', 'Eurocommunisme', 1975, 3, 0],
+      ['mutu', 'Mutuellisme', 1840, 4, -22], ['anacom', 'Anarcho-communisme', 1876, 4, 22], ['anasyn', 'Anarcho-syndicalisme', 1906, 4, 0],
+      ['ancap', 'Anarcho-capitalisme', 1973, 4, -22], ['communal', 'Communalisme', 1982, 4, 22],
+      ['burke', 'Conservatisme burkéen', 1790, 5, -22], ['democ', 'Démocratie chrétienne', 1891, 5, 22], ['gaull', 'Gaullisme', 1947, 5, 0], ['neocon', 'Néoconservatisme', 1972, 5, -22],
+      ['contrerev', 'Contre-révolution', 1796, 6, 0], ['maurr', 'Maurrassisme', 1899, 6, -22], ['tradint', 'Traditionalisme intégral', 1934, 6, 22], ['neoreac', 'Néoréaction', 2009, 6, 0],
+      ['fasc', 'Fascisme italien', 1919, 7, -22], ['nazi', 'Nazisme', 1920, 7, 22], ['neofasc', 'Néofascisme', 1946, 7, 0],
+      ['bonap', 'Bonapartisme', 1799, 8, -22], ['caud', 'Caudillisme', 1825, 8, 22], ['devaut', 'Développementalisme autoritaire', 1961, 8, 0],
+      ['env', 'Environnementalisme', 1962, 9, -22], ['deep', 'Écologie profonde', 1973, 9, 22], ['ecosoc', 'Écosocialisme', 1985, 9, 0], ['decroiss', 'Décroissance', 2002, 9, -22],
+      ['fem', 'Féminisme', 1791, 10, -22], ['femrad', 'Féminisme radical', 1969, 10, 0], ['intersec', 'Intersectionnalité', 1989, 10, 22], ['decol', 'Décolonialisme', 2000, 10, -22],
+      ['panaf', 'Panafricanisme', 1900, 11, -22], ['baas', 'Baasisme', 1947, 11, 22], ['nasser', 'Nassérisme', 1954, 11, 0], ['nonal', 'Non-alignement', 1955, 11, -22], ['bolivar', 'Bolivarisme', 1999, 11, 0],
+      ['hindu', 'Hindutva', 1923, 12, 22], ['islam', 'Islamisme', 1928, 12, -22], ['theolib', 'Théologie de la libération', 1971, 12, 0],
+      ['techno', 'Technocratie', 1932, 13, -22], ['transh', 'Transhumanisme', 1990, 13, 22], ['neocam', 'Néocaméralisme', 2008, 13, -22], ['accel', 'Accélérationnisme', 2013, 13, 0]
+    ];
+    const derive = [
+      ['libclass', 'soclib'], ['libclass', 'ordo'], ['libclass', 'neolib'], ['libclass', 'libert'], ['libert', 'ancap'], ['libert', 'neocam'], ['neocam', 'neoreac'],
+      ['utop', 'marx'], ['marx', 'lenin'], ['lenin', 'trotsk'], ['trotsk', 'posad'], ['lenin', 'mao'], ['marx', 'conseil'], ['marx', 'socdem'], ['lenin', 'euroc'], ['socdem', 'socdemo'],
+      ['mutu', 'anacom'], ['anacom', 'anasyn'], ['anacom', 'communal'], ['burke', 'neocon'], ['contrerev', 'maurr'], ['jacob', 'radic'], ['radic', 'laic'], ['jacob', 'bonap'],
+      ['fasc', 'neofasc'], ['env', 'deep'], ['env', 'decroiss'], ['fem', 'femrad'], ['femrad', 'intersec']
+    ];
+    const synth = [['trotsk', 'neocon'], ['bonap', 'gaull'], ['intersec', 'decol'], ['marx', 'theolib'], ['mutu', 'ancap']];
+    const hl = [['env', 'ecosoc'], ['marx', 'ecosoc']];
+    return { lanes: lanes, nodes: nodes, derive: derive, synth: synth, hl: hl };
+  }
+  renderVals() {
+    const d = this.data();
+    const X = (yr) => (yr - 1760) / 280 * 1000;
+    const pos = {};
+    const lineage = { ecosoc: 'sel', env: 'parent', marx: 'parent' };
+    const nodes = d.nodes.map((n) => {
+      const x = X(n[2]);
+      const y = n[3] * 72 + 36 + n[4];
+      pos[n[0]] = [x, y];
+      const color = d.lanes[n[3]][1];
+      const role = lineage[n[0]];
+      return {
+        name: n[1], year: n[2],
+        x: (x / 10).toFixed(2), y: y,
+        border: role === 'parent' ? '2.5px solid #1F3A93' : '1.5px solid ' + color,
+        bg: role === 'sel' ? '#1F3A93' : '#FFFFFF',
+        fg: role === 'sel' ? '#FFFFFF' : '#15171C',
+        weight: role ? '600' : '400'
+      };
+    });
+    const path = (pairs) => pairs.map((p) => {
+      const a = pos[p[0]], b = pos[p[1]];
+      const m = ((a[0] + b[0]) / 2).toFixed(1);
+      return 'M' + a[0].toFixed(1) + ' ' + a[1] + ' C' + m + ' ' + a[1] + ' ' + m + ' ' + b[1] + ' ' + b[0].toFixed(1) + ' ' + b[1];
+    }).join(' ');
+    const ticks = [];
+    for (let yr = 1775; yr <= 2025; yr += 25) ticks.push({ label: yr, x: (X(yr) / 10).toFixed(2) });
+    return {
+      lanes: d.lanes.map((l, i) => ({ name: l[0], color: l[1], top: i * 72, bg: i % 2 ? '#F7F8FA' : '#FFFFFF' })),
+      nodes: nodes,
+      ticks: ticks,
+      derivePath: path(d.derive),
+      synthPath: path(d.synth),
+      hlPath: path(d.hl)
+    };
+  }
+}
+</script>
+</body>
+</html>
