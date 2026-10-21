@@ -15,6 +15,14 @@ const groupes = familles.map((famille) => ({
     .map((c) => c.data)
     .toSorted((a, b) => (a.emergence?.annee ?? Infinity) - (b.emergence?.annee ?? Infinity) || a.nom.localeCompare(b.nom, 'fr')),
 }));
+
+/** Texte de recherche : nom et alias, sans accents ni casse. */
+const cle = (...textes: string[]) =>
+  textes
+    .join(' ')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase();
 ---
 
 <BaseLayout titre="Courants">
@@ -22,12 +30,18 @@ const groupes = familles.map((famille) => ({
     {courants.length} courants répartis en {familles.length} familles-racines.
   </PageIntro>
 
+  <div class="conteneur filtre">
+    <label for="filtre-courants">Filtrer les courants</label>
+    <input id="filtre-courants" type="search" placeholder="Nom ou autre appellation…" autocomplete="off" data-filtre />
+    <p class="filtre__resultat" aria-live="polite" data-filtre-resultat></p>
+  </div>
+
   <div class="conteneur familles">
     {
       groupes.map(({ famille, courants }) => (
-        <section class="bloc famille" aria-labelledby={`famille-${famille.id}`}>
+        <section id={`famille-${famille.id}`} class="bloc famille" aria-labelledby={`t-famille-${famille.id}`} data-famille>
           <header class="famille__entete">
-            <h2 id={`famille-${famille.id}`} class="sr-only">
+            <h2 id={`t-famille-${famille.id}`} class="sr-only">
               {famille.nom}
             </h2>
             <PastilleFamille famille={famille} />
@@ -36,7 +50,7 @@ const groupes = familles.map((famille) => ({
           {courants.length > 0 ? (
             <ul class="famille__courants">
               {courants.map((c) => (
-                <li>
+                <li data-recherche={cle(c.nom, ...c.alias)}>
                   <a href={lien(`courants/${c.id}/`)}>{c.nom}</a>
                   <span class="statut">{libellesStatut[c.statut]}</span>
                 </li>
@@ -52,6 +66,37 @@ const groupes = familles.map((famille) => ({
 </BaseLayout>
 
 <style>
+  .filtre {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-block: 0 20px;
+  }
+
+  .filtre label {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .filtre input {
+    width: 100%;
+    max-width: 420px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-s);
+    background: var(--c-fond);
+    color: var(--c-encre);
+    font-family: var(--f-texte);
+    font-size: 15px;
+  }
+
+  .filtre__resultat {
+    min-height: 1.5em;
+    font-size: 14px;
+    color: var(--c-texte-3);
+  }
+
   .familles {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
@@ -63,6 +108,11 @@ const groupes = familles.map((famille) => ({
     display: flex;
     flex-direction: column;
     gap: 14px;
+    scroll-margin-top: 16px;
+  }
+
+  .famille[hidden] {
+    display: none;
   }
 
   .famille__entete {
@@ -91,6 +141,10 @@ const groupes = familles.map((famille) => ({
     border-top: 1px solid var(--c-ligne);
   }
 
+  .famille__courants li[hidden] {
+    display: none;
+  }
+
   .famille__courants a {
     display: inline-flex;
     align-items: center;
@@ -105,3 +159,35 @@ const groupes = familles.map((famille) => ({
     white-space: nowrap;
   }
 </style>
+
+<script>
+  const champ = document.querySelector<HTMLInputElement>('[data-filtre]');
+  const resultat = document.querySelector<HTMLElement>('[data-filtre-resultat]');
+  const familles = [...document.querySelectorAll<HTMLElement>('[data-famille]')];
+
+  const normaliser = (s: string) =>
+    s
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+      .trim();
+
+  champ?.addEventListener('input', () => {
+    const requete = normaliser(champ.value);
+    let total = 0;
+    for (const famille of familles) {
+      const lignes = [...famille.querySelectorAll<HTMLElement>('[data-recherche]')];
+      let visibles = 0;
+      for (const ligne of lignes) {
+        ligne.hidden = requete !== '' && !(ligne.dataset.recherche ?? '').includes(requete);
+        if (!ligne.hidden) visibles++;
+      }
+      famille.hidden = requete !== '' && visibles === 0;
+      total += visibles;
+    }
+    if (resultat) {
+      resultat.textContent =
+        requete === '' ? '' : total === 0 ? 'Aucun courant ne correspond.' : `${total} courant${total > 1 ? 's' : ''}`;
+    }
+  });
+</script>

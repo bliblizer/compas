@@ -11,6 +11,7 @@
     {
       "id": "eco-1",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Propriété]",
+      "libelleCourt": "Propriété",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -24,6 +25,7 @@
     {
       "id": "eco-2",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Marché]",
+      "libelleCourt": "Marché",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -37,6 +39,7 @@
     {
       "id": "eco-3",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Redistribution]",
+      "libelleCourt": "Redistribution",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -50,6 +53,7 @@
     {
       "id": "eco-4",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Planification]",
+      "libelleCourt": "Planification",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -63,6 +67,7 @@
     {
       "id": "eco-5",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Commerce extérieur]",
+      "libelleCourt": "Commerce extérieur",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -76,6 +81,7 @@
     {
       "id": "eco-6",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Travail]",
+      "libelleCourt": "Travail",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {
@@ -89,6 +95,7 @@
     {
       "id": "eco-7",
       "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Monnaie et finance]",
+      "libelleCourt": "Monnaie et finance",
       "pole0": "[À COMPLÉTER]",
       "pole10": "[À COMPLÉTER]",
       "ancres": {

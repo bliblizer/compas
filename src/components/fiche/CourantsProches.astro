@@ -1,0 +1,96 @@
+---
+// Les trois courants les plus proches (docs/methode.md), sur les notes réelles uniquement.
+import { plusProches, SEUIL_CRITERES_COMMUNS, type Valeurs } from '../../lib/distances';
+import { getNotesParGrille } from '../../lib/notes';
+import { lien } from '../../lib/site';
+
+interface Props {
+  courant: string;
+  noms: Map<string, string>;
+}
+
+const { courant, noms } = Astro.props;
+
+// Toutes grilles confondues ; les données de démonstration n'entrent pas dans le calcul.
+const valeurs = new Map<string, Valeurs>();
+for (const series of getNotesParGrille().values()) {
+  for (const serie of series.values()) {
+    if (serie.demo) continue;
+    const v = valeurs.get(serie.courant) ?? {};
+    for (const [critere, note] of Object.entries(serie.notes)) v[critere] = note.valeur;
+    valeurs.set(serie.courant, v);
+  }
+}
+const proches = plusProches(courant, valeurs).slice(0, 3);
+const fr = (v: number) => v.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+---
+
+<section class="bloc proches" aria-labelledby="t-proches">
+  <h2 id="t-proches" class="libelle-mono">Courants les plus proches</h2>
+  {
+    proches.length > 0 ? (
+      <ul>
+        {proches.map((p) => (
+          <li>
+            <a href={lien(`courants/${p.courant}/`)}>{noms.get(p.courant) ?? p.courant}</a>
+            <span class="proches__distance" title={`${p.communs} critères comparés`}>
+              {fr(p.distance)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="proches__vide">
+        <span class="proches__distance">[distance]</span> Calcul possible dès que ce courant partagera au moins{' '}
+        {SEUIL_CRITERES_COMMUNS} critères notés et sourcés avec d’autres courants.
+      </p>
+    )
+  }
+  <slot />
+</section>
+
+<style>
+  .proches {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 14px;
+    padding: 22px;
+  }
+
+  h2 {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .proches__distance {
+    font-family: var(--f-mono);
+    color: var(--c-texte-3);
+  }
+
+  .proches__vide {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--c-texte-2);
+  }
+</style>

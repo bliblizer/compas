@@ -1,0 +1,154 @@
+---
+import { getModules } from '../../lib/data';
+import type { Courant } from '../../lib/schemas';
+import { lien } from '../../lib/site';
+
+interface Props {
+  courant: Courant;
+  /** Parents issus de data/relations.json (dérive et synthèse). */
+  parents: string[];
+  noms: Map<string, string>;
+}
+
+const { courant, parents, noms } = Astro.props;
+const aRediger = courant.statut === 'a_rediger';
+const A_COMPLETER = '[À COMPLÉTER]';
+const modules = new Map(getModules().map((m) => [m.id, m.nom]));
+
+const e = courant.emergence;
+const emergence = e ? (e.libelle ?? (e.annee !== null ? String(e.annee) : null)) : null;
+const references = courant.textesReference.map((t) => ({
+  titre: t.titre,
+  details: [t.auteurs, t.annee].filter((x) => x !== null && x !== '').join(', '),
+}));
+const liste = (ids: string[]) => ids.map((id) => ({ id, nom: noms.get(id) ?? id }));
+---
+
+<section class="identite" aria-labelledby="t-identite">
+  <h2 id="t-identite">Carte d’identité</h2>
+  <dl>
+    <div>
+      <dt>Émergence</dt>
+      <dd>
+        {emergence ?? A_COMPLETER}
+        {emergence && e?.aVerifier && <span class="identite__verifier">date à vérifier</span>}
+      </dd>
+    </div>
+    <div>
+      <dt>{references.length > 1 ? 'Textes de référence' : 'Texte de référence'}</dt>
+      <dd>
+        {
+          references.length > 0
+            ? references.map((r, i) => (
+                <>
+                  {i > 0 && ' ; '}
+                  <cite>{r.titre}</cite>
+                  {r.details && ` (${r.details})`}
+                </>
+              ))
+            : A_COMPLETER
+        }
+      </dd>
+    </div>
+    <div>
+      <dt>Figures</dt>
+      <dd>{courant.figures.length > 0 ? courant.figures.join(', ') : A_COMPLETER}</dd>
+    </div>
+    <div>
+      <dt>Parents</dt>
+      <dd>
+        {
+          parents.length > 0
+            ? liste(parents).map((p, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={lien(`courants/${p.id}/`)}>{p.nom}</a>
+                </>
+              ))
+            : 'Aucun recensé'
+        }
+      </dd>
+    </div>
+    <div>
+      <dt>En dialogue avec</dt>
+      <dd>
+        {
+          courant.enDialogueAvec.length > 0
+            ? liste(courant.enDialogueAvec).map((p, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={lien(`courants/${p.id}/`)}>{p.nom}</a>
+                </>
+              ))
+            : aRediger
+              ? A_COMPLETER
+              : 'Aucun'
+        }
+      </dd>
+    </div>
+    <div>
+      <dt>Modules</dt>
+      <dd>
+        {
+          courant.modules.length > 0
+            ? courant.modules.map((m) => modules.get(m) ?? m).join(', ')
+            : aRediger
+              ? A_COMPLETER
+              : 'Aucun'
+        }
+      </dd>
+    </div>
+  </dl>
+</section>
+
+<style>
+  .identite {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 1px;
+    margin: 0;
+    border: 1px solid var(--c-ligne);
+    border-radius: var(--r-m);
+    background: var(--c-ligne);
+    overflow: hidden;
+  }
+
+  dl > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 18px;
+    background: var(--c-fond);
+  }
+
+  dt {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c-texte-3);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  cite {
+    font-style: italic;
+  }
+
+  .identite__verifier {
+    display: inline-block;
+    margin-left: 8px;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--c-texte-3);
+  }
+</style>

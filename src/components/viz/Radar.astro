@@ -1,0 +1,55 @@
+---
+// Radar D3 (voir src/lib/viz/radar.ts). Rendu côté client dans <compas-radar> ;
+// les séries peuvent être remplacées ensuite : element.maj(series).
+// Le tableau de données accessible est fourni par la page appelante.
+import type { ConfigRadar } from '../../lib/viz/radar';
+
+interface Props {
+  config: ConfigRadar;
+}
+
+const { config } = Astro.props;
+---
+
+<compas-radar class="radar" data-config={JSON.stringify(config)}></compas-radar>
+
+<style>
+  .radar {
+    display: block;
+    width: 100%;
+    aspect-ratio: 440 / 400;
+  }
+
+  .radar :global(.radar__svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .radar :global(.radar__libelles text) {
+    font-family: var(--f-texte);
+    font-size: 13px;
+    fill: var(--c-texte);
+  }
+</style>
+
+<script>
+  import { creerRadar, type ConfigRadar, type Radar, type SerieRadar } from '../../lib/viz/radar';
+
+  class CompasRadar extends HTMLElement {
+    private radar?: Radar;
+
+    connectedCallback() {
+      if (this.radar) return;
+      const config = JSON.parse(this.dataset.config ?? '{}') as ConfigRadar;
+      this.radar = creerRadar(this, config);
+    }
+
+    maj(series: SerieRadar[]) {
+      this.radar?.maj(series);
+    }
+  }
+
+  if (!customElements.get('compas-radar')) customElements.define('compas-radar', CompasRadar);
+</script>

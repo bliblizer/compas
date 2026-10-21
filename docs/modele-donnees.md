@@ -84,10 +84,12 @@ Le catalogue `data/seed/courants-catalogue.json` sert à générer les fichiers 
   "orientation": "10 = pôle marchand sur chaque critère",
   "statut": "…",
   "criteres": [
-    { "id": "eco-1", "libelle": "…", "pole0": "…", "pole10": "…",
+    { "id": "eco-1", "libelle": "…", "libelleCourt": "…", "pole0": "…", "pole10": "…",
       "ancres": { "0": "…", "2.5": "…", "5": "…", "7.5": "…", "10": "…" } }
   ]}
 ```
+
+`libelleCourt` (facultatif, 24 caractères au plus) est le libellé affiché sur les axes des radars ; le tableau de données affiche `libelle`.
 
 ## Scores — `data/scores/<courant>.json`
 

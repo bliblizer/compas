@@ -101,4 +101,4 @@ npm run fiches      # crée les fiches manquantes depuis le catalogue (n'écrase
 
 ## État actuel
 
-Itération 0 (initialisation) implémentée : projet Astro, déploiement GitHub Pages, gabarit et navigation, pages provisoires, schémas et contrôle des données (`npm run check:data`), 73 fiches générées (`npm run fiches`). Prochaine étape : `docs/specs/03-fiche.md` (itération 1).
+Itération 0 (initialisation) implémentée : projet Astro, déploiement GitHub Pages, gabarit et navigation, pages provisoires, schémas et contrôle des données (`npm run check:data`), 73 fiches générées (`npm run fiches`). Itération 1 (fiches courants, spec 03) implémentée : index filtrable, fiche en deux colonnes, radar D3 réutilisable (`<compas-radar>`) avec superposition, proximités. Prochaine étape : `docs/specs/01-carte.md` (itération 2).

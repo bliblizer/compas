@@ -1,0 +1,85 @@
+---
+import type { Courant } from '../../lib/schemas';
+
+interface Props {
+  tribunal: Courant['tribunal'];
+}
+
+const { tribunal } = Astro.props;
+
+const libellesVerdict: Record<Courant['tribunal'][number]['verdict'], string> = {
+  vrai: 'vrai',
+  faux: 'faux',
+  nuance: 'nuancé',
+  depend: 'ça dépend',
+};
+---
+
+<section class="tribunal" aria-labelledby="t-tribunal">
+  <h2 id="t-tribunal">Tribunal des idées reçues</h2>
+  {
+    tribunal.length > 0 ? (
+      tribunal.map((t) => (
+        <article class="tribunal__carte">
+          <div class="tribunal__entete">
+            <h3>«&nbsp;{t.idee}&nbsp;»</h3>
+            <span class="tribunal__verdict">Verdict&nbsp;: {libellesVerdict[t.verdict]}</span>
+          </div>
+          <p>{t.explication}</p>
+          {t.sources.length > 0 && <p class="tribunal__sources">Sources&nbsp;: {t.sources.join(' ; ')}</p>}
+        </article>
+      ))
+    ) : (
+      <p class="a-completer">[À COMPLÉTER]</p>
+    )
+  }
+</section>
+
+<style>
+  .tribunal {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .tribunal__carte {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px;
+    border: 1px solid var(--c-bord);
+    border-radius: var(--r-m);
+  }
+
+  .tribunal__entete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  h3 {
+    font-size: 19px;
+  }
+
+  .tribunal__verdict {
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    background: var(--c-verdict-fond);
+    color: var(--c-verdict-texte);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--c-texte-2);
+  }
+
+  .tribunal__sources {
+    font-size: 13px;
+    color: var(--c-texte-3);
+  }
+</style>

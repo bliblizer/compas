@@ -68,6 +68,8 @@ export const critereSchema = z
   .object({
     id: identifiant,
     libelle: z.string().min(1),
+    /** Libellé affiché sur les axes des radars (le libellé complet reste dans le tableau). */
+    libelleCourt: z.string().min(1).max(24).optional(),
     pole0: z.string().min(1),
     pole10: z.string().min(1),
     ancres: ancresSchema,

@@ -1,69 +1,147 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import PastilleFamille from '../../components/PastilleFamille.astro';
+import ProfilGrilles from '../../components/ProfilGrilles.astro';
+import ArbreGenealogique from '../../components/fiche/ArbreGenealogique.astro';
+import CarteIdentite from '../../components/fiche/CarteIdentite.astro';
+import CourantsProches from '../../components/fiche/CourantsProches.astro';
+import Tribunal from '../../components/fiche/Tribunal.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getFamille, libellesStatut } from '../../lib/data';
-import type { Courant } from '../../lib/schemas';
+import { getCourants, liensDe } from '../../lib/courants';
+import { getFamille, getModules } from '../../lib/data';
+import { couleurLisible } from '../../lib/couleurs';
 import { lien } from '../../lib/site';
 
 export async function getStaticPaths() {
   const courants = await getCollection('courants');
-  return courants.map((c) => ({ params: { id: c.data.id }, props: { courant: c.data } }));
+  return courants.map((entree) => ({ params: { id: entree.data.id }, props: { entree } }));
 }
 
 interface Props {
-  courant: Courant;
+  entree: CollectionEntry<'courants'>;
 }
 
-const { courant } = Astro.props;
+const { entree } = Astro.props;
+const courant = entree.data;
+const { Content } = await render(entree);
+
 const famille = getFamille(courant.famille);
 if (!famille) throw new Error(`Famille inconnue pour ${courant.id} : ${courant.famille}`);
+const lignees = courant.lignees.flatMap((id) => getFamille(id) ?? []);
+const modules = getModules().filter((m) => courant.modules.includes(m.id));
+
+const courants = await getCourants();
+const noms = new Map([...courants].map(([id, c]) => [id, c.nom]));
+const liens = liensDe(courant.id);
+const parents = [...new Set([...liens.deriveDe, ...liens.syntheseAvec])];
 ---
 
 <BaseLayout titre={courant.nom}>
   <div class="conteneur fiche">
-    <nav aria-label="Fil d’Ariane" class="ariane">
-      <a href={lien('courants/')}>Courants</a>
-      <span aria-hidden="true">/</span>
-      <span>{famille.nom}</span>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">{courant.nom}</span>
-    </nav>
+    <article class="fiche__article" style={`--c-famille-texte: ${couleurLisible(famille.couleur, 4.5)}`}>
+      <header class="fiche__entete">
+        <nav aria-label="Fil d’Ariane" class="ariane">
+          <a href={lien()}>Atlas</a>
+          <span aria-hidden="true">/</span>
+          <a href={lien(`courants/#famille-${famille.id}`)}>{famille.nom}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{courant.nom}</span>
+        </nav>
+        <h1>{courant.nom}</h1>
+        <div class="fiche__pastilles">
+          <PastilleFamille famille={famille} prefixe={'Famille : '} />
+          {lignees.map((l) => <PastilleFamille famille={l} prefixe={'Lignée secondaire : '} />)}
+          {modules.map((m) => <span class="fiche__module">Module&nbsp;: {m.nom}</span>)}
+        </div>
+      </header>
 
-    <h1>{courant.nom}</h1>
+      {
+        courant.statut === 'a_rediger' && (
+          <p class="fiche__bandeau" role="note">
+            <span class="libelle-mono">Fiche en cours de rédaction</span>
+            Les sections marquées [À COMPLÉTER] seront rédigées et sourcées prochainement.
+          </p>
+        )
+      }
 
-    <dl class="identite">
-      <div>
-        <dt class="libelle-mono">Famille</dt>
-        <dd><PastilleFamille famille={famille} /></dd>
+      <CarteIdentite courant={courant} parents={parents} noms={noms} />
+
+      <div class="fiche__corps">
+        <Content />
       </div>
-      <div>
-        <dt class="libelle-mono">Statut</dt>
-        <dd>{libellesStatut[courant.statut]}</dd>
-      </div>
-    </dl>
 
-    <div class="bloc bloc--alt">
-      <p class="libelle-mono">Fiche à venir</p>
-      <p>La fiche complète de ce courant sera publiée dans une prochaine étape.</p>
-    </div>
+      <ArbreGenealogique courant={courant} liens={liens} courants={courants} />
+
+      <Tribunal tribunal={courant.tribunal} />
+
+      <section class="fiche__sources" aria-labelledby="t-sources">
+        <h2 id="t-sources">Sources de cette fiche</h2>
+        {
+          courant.sources.length > 0 ? (
+            <ul>
+              {courant.sources.map((s) => (
+                <li>{s}</li>
+              ))}
+            </ul>
+          ) : (
+            <p class="a-completer">[À COMPLÉTER]</p>
+          )
+        }
+      </section>
+    </article>
+
+    <aside class="fiche__laterale" aria-label="Profil et proximités">
+      <ProfilGrilles courant={courant} />
+      <CourantsProches courant={courant.id} noms={noms}>
+        <a class="fiche__candidats" href={lien(`candidats/?courant=${courant.id}`)}>Comparer avec les candidats</a>
+      </CourantsProches>
+    </aside>
   </div>
 </BaseLayout>
 
 <style>
   .fiche {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 24px;
-    padding-block: 32px 56px;
+    gap: 48px;
+    padding-block: 32px 64px;
+  }
+
+  .fiche__article {
+    flex: 999 1 560px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .fiche__laterale {
+    flex: 1 1 420px;
+    max-width: 480px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fiche__entete {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .fiche__entete h1 {
+    font-size: clamp(36px, 7vw, 56px);
+    line-height: 1.02;
+    overflow-wrap: anywhere;
   }
 
   .ariane {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 0 8px;
     font-size: 14px;
     color: var(--c-texte-3);
   }
@@ -74,28 +152,138 @@ if (!famille) throw new Error(`Famille inconnue pour ${courant.id} : ${courant.f
     min-height: 44px;
   }
 
-  .identite {
+  .fiche__pastilles {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 40px;
-    margin: 0;
+    gap: 8px;
   }
 
-  .identite div {
+  .fiche__module {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-pill);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .fiche__bandeau {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-  }
-
-  .identite dd {
-    margin: 0;
-  }
-
-  .bloc {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 760px;
+    gap: 4px;
+    padding: 14px 18px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-m);
+    background: var(--c-fond-alt);
+    font-size: 15px;
     color: var(--c-texte-2);
+  }
+
+  .fiche__article :global(h2) {
+    font-size: 24px;
+  }
+
+  /* Corps Markdown (voir src/lib/markdown/rehype-fiche.ts) */
+  .fiche__corps {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .fiche__corps :global(.fiche-section) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 720px;
+  }
+
+  .fiche__corps :global(p),
+  .fiche__corps :global(li) {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--c-texte);
+  }
+
+  .fiche__corps :global(.fiche-section--principes-fondamentaux) {
+    max-width: none;
+  }
+
+  .fiche__corps :global(.principes) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 16px;
+    counter-reset: principe;
+  }
+
+  .fiche__corps :global(.principe) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    border: 1px solid var(--c-bord);
+    border-radius: var(--r-m);
+    counter-increment: principe;
+  }
+
+  .fiche__corps :global(.principe)::before {
+    content: counter(principe, decimal-leading-zero);
+    font-family: var(--f-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c-famille-texte);
+  }
+
+  .fiche__corps :global(.principe h3) {
+    font-family: var(--f-texte);
+    font-size: 16px;
+  }
+
+  .fiche__corps :global(.principe p) {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--c-texte-2);
+  }
+
+  .fiche__sources {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .fiche__sources ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--c-texte-2);
+  }
+
+  .fiche__candidats {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-top: 6px;
+    border: 1px solid var(--c-accent);
+    border-radius: var(--r-s);
+    color: var(--c-accent);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .fiche__candidats:hover {
+    background: var(--c-accent-doux);
+  }
+
+  @media (max-width: 640px) {
+    .fiche {
+      gap: 32px;
+      padding-block: 16px 48px;
+    }
+
+    .fiche__laterale {
+      flex-basis: 100%;
+      max-width: none;
+    }
   }
 </style>

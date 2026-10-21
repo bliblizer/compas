@@ -1,0 +1,476 @@
+---
+// Profil d'un courant par grille thématique : onglets, radar, superposition, tableau.
+import { getCollection } from 'astro:content';
+import { getFamilles, getGrilles } from '../lib/data';
+import { couleurLisible } from '../lib/couleurs';
+import { plusProches, type Valeurs } from '../lib/distances';
+import { getNotesParGrille, type NoteCritere, type SerieNotes } from '../lib/notes';
+import type { Courant, Grille } from '../lib/schemas';
+import { MOTIFS_COMPARAISON, type SerieRadar } from '../lib/viz/radar';
+import BandeauDemo from './BandeauDemo.astro';
+import Radar from './viz/Radar.astro';
+
+interface Props {
+  courant: Courant;
+}
+
+const { courant } = Astro.props;
+const MAX_SUPERPOSITIONS = MOTIFS_COMPARAISON.length;
+
+const couleurFamille = new Map(getFamilles().map((f) => [f.id, couleurLisible(f.couleur)]));
+const infos = new Map((await getCollection('courants')).map((c) => [c.data.id, c.data]));
+const notesParGrille = getNotesParGrille();
+
+function serieRadar(grille: Grille, serie: SerieNotes, principale: boolean): SerieRadar {
+  const info = infos.get(serie.courant);
+  const notes = grille.criteres.map((c) => serie.notes[c.id]);
+  return {
+    id: serie.courant,
+    nom: info?.nom ?? serie.courant,
+    couleur: couleurFamille.get(info?.famille ?? '') ?? 'var(--c-encre)',
+    valeurs: notes.map((n) => n?.valeur ?? null),
+    ...(principale && { principale, min: notes.map((n) => n?.min ?? null), max: notes.map((n) => n?.max ?? null) }),
+  };
+}
+
+type Panneau =
+  | { grille: Grille; etat: 'bareme' | 'non-note' }
+  | {
+      grille: Grille;
+      etat: 'radar';
+      principale: SerieRadar;
+      candidates: SerieRadar[];
+      actives: string[];
+      notes: (NoteCritere | undefined)[];
+      demo: boolean;
+      demoPrincipale: boolean;
+      conteste: boolean;
+    };
+
+const panneaux: Panneau[] = getGrilles().map((grille): Panneau => {
+  if (grille.criteres.length === 0) return { grille, etat: 'bareme' };
+  const series = notesParGrille.get(grille.id) ?? new Map<string, SerieNotes>();
+  const serie = series.get(courant.id);
+  if (!serie) return { grille, etat: 'non-note' };
+
+  // Candidates à la superposition : courants notés sur la grille, du plus proche au plus éloigné.
+  const valeurs = new Map<string, Valeurs>(
+    [...series.values()].map((s) => [s.courant, Object.fromEntries(Object.entries(s.notes).map(([c, n]) => [c, n.valeur]))]),
+  );
+  const proches = plusProches(courant.id, valeurs, 1);
+  const candidates = proches.flatMap((p) => {
+    const s = series.get(p.courant);
+    return s ? [serieRadar(grille, s, false)] : [];
+  });
+  const notes = grille.criteres.map((c) => serie.notes[c.id]);
+  return {
+    grille,
+    etat: 'radar',
+    principale: serieRadar(grille, serie, true),
+    candidates,
+    actives: candidates.slice(0, 1).map((c) => c.id),
+    notes,
+    demo: [...series.values()].some((s) => s.demo),
+    demoPrincipale: serie.demo,
+    conteste: notes.some((n) => n?.conteste),
+  };
+});
+
+const initial = panneaux.find((p) => p.etat === 'radar') ?? panneaux.find((p) => p.etat !== 'bareme') ?? panneaux[0];
+const fr = (v: number) => v.toLocaleString('fr-FR', { maximumFractionDigits: 1 });
+/** JSON sûr dans une balise <script> (aucun « < » brut). */
+const jsonInline = (valeur: unknown) => JSON.stringify(valeur).replaceAll('<', '\\u003c');
+---
+
+<section class="bloc profil" data-profil aria-labelledby="profil-titre">
+  <div class="profil__entete">
+    <p class="libelle-mono">Profil par grille</p>
+    <h2 id="profil-titre" data-profil-titre>{initial?.grille.nom}</h2>
+  </div>
+
+  <div class="profil__onglets" role="group" aria-label="Grille thématique">
+    {
+      panneaux.map((p) => (
+        <button type="button" data-onglet={p.grille.id} aria-pressed={p === initial ? 'true' : 'false'}>
+          {p.grille.nom}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    panneaux.map((p) => (
+      <div class="profil__panneau" data-panneau={p.grille.id} data-nom={p.grille.nom} hidden={p !== initial}>
+        {p.etat === 'bareme' && (
+          <div class="profil__vide">
+            <p class="profil__vide-titre">Barème à établir</p>
+            <p>La grille « {p.grille.nom} » est construite, mais sa conversion en notes de 0 à 10 reste à définir.</p>
+          </div>
+        )}
+        {p.etat === 'non-note' && (
+          <div class="profil__vide">
+            <p class="profil__vide-titre">Pas encore noté sur cette grille</p>
+            <p>Le barème de la grille « {p.grille.nom} » existe, mais ce courant n’a pas encore été noté.</p>
+          </div>
+        )}
+        {p.etat === 'radar' && (
+          <div class="profil__radar">
+            {p.demo && <BandeauDemo />}
+            <Radar
+              config={{
+                titre: `Radar des ${p.grille.criteres.length} critères de la grille ${p.grille.nom} : ${p.principale.nom} et courants superposés`,
+                axes: p.grille.criteres.map((c, i) => ({
+                  id: c.id,
+                  libelle: c.libelleCourt ?? c.libelle,
+                  conteste: p.notes[i]?.conteste ?? false,
+                })),
+                series: [
+                  p.principale,
+                  ...p.candidates
+                    .filter((c) => p.actives.includes(c.id))
+                    .map((c, i) => ({ ...c, motif: MOTIFS_COMPARAISON[i] })),
+                ],
+              }}
+            />
+            <p class="profil__bareme">
+              Barème&nbsp;: {p.grille.orientation}
+              {p.demo && ' · valeurs de démonstration'}
+              {p.conteste && ' · * note contestée'}
+            </p>
+
+            <div class="profil__superposer">
+              <p class="profil__superposer-titre">Superposer</p>
+              <p class="profil__ligne">
+                <svg width="32" height="10" aria-hidden="true">
+                  <line x1="0" y1="5" x2="32" y2="5" stroke={p.principale.couleur} stroke-width="3" />
+                </svg>
+                {p.principale.nom}
+              </p>
+              {p.candidates.length > 0 ? (
+                <>
+                  <p class="profil__aide" id={`aide-${p.grille.id}`}>
+                    Jusqu’à {MAX_SUPERPOSITIONS} courants, du plus proche au plus éloigné sur cette grille.
+                  </p>
+                  {p.candidates.map((c) => {
+                    const rang = p.actives.indexOf(c.id);
+                    return (
+                      <button
+                        type="button"
+                        class="profil__bascule"
+                        data-superposer={c.id}
+                        aria-pressed={rang >= 0 ? 'true' : 'false'}
+                        aria-describedby={`aide-${p.grille.id}`}
+                      >
+                        <svg width="32" height="10" aria-hidden="true">
+                          <line
+                            x1="0"
+                            y1="5"
+                            x2="32"
+                            y2="5"
+                            stroke={c.couleur}
+                            stroke-width="2.5"
+                            stroke-dasharray={MOTIFS_COMPARAISON[Math.max(rang, 0)]}
+                          />
+                        </svg>
+                        <span class="profil__bascule-nom">{c.nom}</span>
+                        <span class="profil__bascule-etat">{rang >= 0 ? 'affiché' : 'masqué'}</span>
+                      </button>
+                    );
+                  })}
+                  <script type="application/json" data-series set:html={jsonInline({ principale: p.principale, candidates: p.candidates })} />
+                </>
+              ) : (
+                <p class="profil__aide">Aucun autre courant n’est encore noté sur cette grille.</p>
+              )}
+            </div>
+
+            <details class="profil__tableau">
+              <summary>Tableau des notes</summary>
+              <div class="profil__tableau-cadre">
+                <table>
+                  <caption class="sr-only">
+                    Notes de {p.principale.nom} sur la grille {p.grille.nom}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Critère</th>
+                      <th scope="col">Note</th>
+                      <th scope="col">Fourchette</th>
+                      <th scope="col">Source</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {p.grille.criteres.map((c, i) => {
+                      const n = p.notes[i];
+                      return (
+                        <tr>
+                          <th scope="row">{c.libelle}</th>
+                          <td>
+                            {n ? fr(n.valeur) : '—'}
+                            {n?.conteste && ' (contestée)'}
+                          </td>
+                          <td>{n && (n.min !== null || n.max !== null) ? `${fr(n.min ?? n.valeur)} – ${fr(n.max ?? n.valeur)}` : '—'}</td>
+                          <td>
+                            {!n
+                              ? 'Non noté'
+                              : n.sources.length > 0
+                                ? n.sources.join(' ; ')
+                                : p.demoPrincipale
+                                  ? 'Donnée de démonstration'
+                                  : 'Provisoire (sans source)'}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+        )}
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .profil {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 14px;
+    padding: 22px;
+  }
+
+  .profil__entete {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .profil__entete h2 {
+    font-size: 22px;
+  }
+
+  .profil__onglets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .profil__onglets button {
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-pill);
+    background: var(--c-fond);
+    color: var(--c-texte);
+    font-family: var(--f-texte);
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .profil__onglets button[aria-pressed='true'] {
+    border-color: var(--c-accent);
+    background: var(--c-accent);
+    color: #FFFFFF;
+  }
+
+  .profil__radar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .profil__bareme {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--c-texte-3);
+  }
+
+  .profil__superposer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .profil__superposer-titre {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .profil__ligne {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 36px;
+    font-size: 14px;
+  }
+
+  .profil__aide {
+    font-size: 13px;
+    color: var(--c-texte-3);
+  }
+
+  .profil__bascule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--c-bord-2);
+    border-radius: var(--r-s);
+    background: var(--c-fond);
+    color: var(--c-encre);
+    font-family: var(--f-texte);
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .profil__bascule[aria-pressed='true'] {
+    border-color: var(--c-accent);
+    background: var(--c-accent-doux);
+  }
+
+  .profil__bascule[aria-pressed='false'] svg {
+    opacity: 0.45;
+  }
+
+  .profil__bascule:disabled {
+    cursor: not-allowed;
+    color: var(--c-texte-3);
+  }
+
+  .profil__bascule-nom {
+    flex: 1;
+  }
+
+  .profil__bascule-etat {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--c-texte-3);
+  }
+
+  .profil__vide {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding: 32px 20px;
+    border: 1px dashed var(--c-bord-2);
+    border-radius: var(--r-m);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--c-texte-2);
+  }
+
+  .profil__vide-titre {
+    font-family: var(--f-titre);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--c-encre);
+  }
+
+  .profil__tableau summary {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c-accent);
+    cursor: pointer;
+  }
+
+  .profil__tableau-cadre {
+    overflow-x: auto;
+  }
+
+  .profil__tableau table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .profil__tableau th,
+  .profil__tableau td {
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--c-ligne);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .profil__tableau thead th {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--c-texte-3);
+  }
+
+  .profil__tableau tbody th {
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  import { MOTIFS_COMPARAISON, type SerieRadar } from '../lib/viz/radar';
+
+  interface ElementRadar extends HTMLElement {
+    maj(series: SerieRadar[]): void;
+  }
+
+  function initialiserPanneau(panneau: HTMLElement) {
+    const json = panneau.querySelector<HTMLScriptElement>('script[data-series]');
+    const radar = panneau.querySelector<ElementRadar>('compas-radar');
+    if (!json || !radar) return;
+    const { principale, candidates } = JSON.parse(json.textContent ?? '{}') as {
+      principale: SerieRadar;
+      candidates: SerieRadar[];
+    };
+    const bascules = [...panneau.querySelectorAll<HTMLButtonElement>('[data-superposer]')];
+    let actives = bascules.filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.superposer ?? '');
+
+    function rendre() {
+      for (const b of bascules) {
+        const rang = actives.indexOf(b.dataset.superposer ?? '');
+        b.setAttribute('aria-pressed', String(rang >= 0));
+        b.disabled = rang < 0 && actives.length >= MOTIFS_COMPARAISON.length;
+        b.querySelector('line')?.setAttribute('stroke-dasharray', MOTIFS_COMPARAISON[Math.max(rang, 0)]);
+        const etat = b.querySelector('.profil__bascule-etat');
+        if (etat) etat.textContent = rang >= 0 ? 'affiché' : 'masqué';
+      }
+      const superposees = actives.flatMap((id, i) => {
+        const c = candidates.find((s) => s.id === id);
+        return c ? [{ ...c, motif: MOTIFS_COMPARAISON[i] }] : [];
+      });
+      radar?.maj([principale, ...superposees]);
+    }
+
+    for (const b of bascules) {
+      b.addEventListener('click', () => {
+        const id = b.dataset.superposer ?? '';
+        actives = actives.includes(id) ? actives.filter((a) => a !== id) : [...actives, id].slice(0, MOTIFS_COMPARAISON.length);
+        rendre();
+      });
+    }
+  }
+
+  function initialiserProfil(profil: HTMLElement) {
+    const titre = profil.querySelector('[data-profil-titre]');
+    const onglets = [...profil.querySelectorAll<HTMLButtonElement>('[data-onglet]')];
+    const panneaux = [...profil.querySelectorAll<HTMLElement>('[data-panneau]')];
+    for (const onglet of onglets) {
+      onglet.addEventListener('click', () => {
+        for (const o of onglets) o.setAttribute('aria-pressed', String(o === onglet));
+        for (const p of panneaux) {
+          p.hidden = p.dataset.panneau !== onglet.dataset.onglet;
+          if (!p.hidden && titre) titre.textContent = p.dataset.nom ?? '';
+        }
+      });
+    }
+    customElements.whenDefined('compas-radar').then(() => panneaux.forEach(initialiserPanneau));
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-profil]').forEach(initialiserProfil);
+</script>
