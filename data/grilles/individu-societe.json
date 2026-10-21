@@ -1,0 +1,11 @@
+{
+  "id": "individu-societe",
+  "nom": "Individu et société",
+  "ordre": 3,
+  "pole0": "Primauté du collectif",
+  "pole10": "Primauté de l'individu",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

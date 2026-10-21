@@ -1,0 +1,11 @@
+{
+  "id": "epistemologie",
+  "nom": "Épistémologie",
+  "ordre": 6,
+  "pole0": "Tradition, révélation",
+  "pole10": "Raison critique",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

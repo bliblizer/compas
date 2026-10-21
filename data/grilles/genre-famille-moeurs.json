@@ -1,0 +1,11 @@
+{
+  "id": "genre-famille-moeurs",
+  "nom": "Genre, famille, mœurs",
+  "ordre": 10,
+  "pole0": "Ordre traditionnel",
+  "pole10": "Égalité, libre choix",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

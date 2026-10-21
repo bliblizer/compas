@@ -1,0 +1,103 @@
+{
+  "id": "economie",
+  "nom": "Économie",
+  "ordre": 1,
+  "pole0": "Planifié",
+  "pole10": "Marchand",
+  "polesAValider": true,
+  "statut": "barème partiel : orientation fixée (10 = pôle marchand), 7 critères à reprendre de l'Excel",
+  "orientation": "10 = pôle marchand sur chaque critère",
+  "criteres": [
+    {
+      "id": "eco-1",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Propriété]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    },
+    {
+      "id": "eco-2",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Marché]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    },
+    {
+      "id": "eco-3",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Redistribution]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    },
+    {
+      "id": "eco-4",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Planification]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    },
+    {
+      "id": "eco-5",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Commerce extérieur]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    },
+    {
+      "id": "eco-6",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Travail]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    },
+    {
+      "id": "eco-7",
+      "libelle": "[À COMPLÉTER — libellé provisoire de maquette : Monnaie et finance]",
+      "pole0": "[À COMPLÉTER]",
+      "pole10": "[À COMPLÉTER]",
+      "ancres": {
+        "0": "[À COMPLÉTER]",
+        "2.5": "[À COMPLÉTER]",
+        "5": "[À COMPLÉTER]",
+        "7.5": "[À COMPLÉTER]",
+        "10": "[À COMPLÉTER]"
+      }
+    }
+  ]
+}

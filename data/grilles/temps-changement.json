@@ -1,0 +1,11 @@
+{
+  "id": "temps-changement",
+  "nom": "Temps et changement",
+  "ordre": 4,
+  "pole0": "Restauration",
+  "pole10": "Rupture",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

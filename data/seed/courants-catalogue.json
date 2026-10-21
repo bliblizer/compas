@@ -1,0 +1,912 @@
+{
+  "_note": "Catalogue de départ (maquettes + courants cités par Alexandre). Familles et lignées validées sur le principe ; dates = repères de maquette, toutes à sourcer (aVerifier). Sert à générer les fiches vides dans src/content/courants/.",
+  "courants": [
+    {
+      "id": "liberalisme-classique",
+      "nom": "Libéralisme classique",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1776,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "minarchisme",
+      "nom": "Minarchisme",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [
+        "État minimal"
+      ],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "georgisme",
+      "nom": "Géorgisme",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1879,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "social-liberalisme",
+      "nom": "Social-libéralisme",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1911,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "ordoliberalisme",
+      "nom": "Ordolibéralisme",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1937,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "neoliberalisme",
+      "nom": "Néolibéralisme",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1947,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "libertarianisme",
+      "nom": "Libertarianisme",
+      "famille": "liberalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1974,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "jacobinisme",
+      "nom": "Jacobinisme",
+      "famille": "republicanismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1793,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "radicalisme",
+      "nom": "Radicalisme",
+      "famille": "republicanismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1901,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "laicisme",
+      "nom": "Laïcisme",
+      "famille": "republicanismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1905,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "neo-republicanisme",
+      "nom": "Néo-républicanisme",
+      "famille": "republicanismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1997,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "socialisme-utopique",
+      "nom": "Socialisme utopique",
+      "famille": "socialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1820,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "cooperatisme",
+      "nom": "Coopératisme",
+      "famille": "socialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1844,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "social-democratie",
+      "nom": "Social-démocratie",
+      "famille": "socialismes",
+      "lignees": [
+        "marxismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1875,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "distributisme",
+      "nom": "Distributisme",
+      "famille": "socialismes",
+      "lignees": [
+        "conservatismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1912,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "socialisme-democratique",
+      "nom": "Socialisme démocratique",
+      "famille": "socialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1951,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "marxisme",
+      "nom": "Marxisme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [
+        "Communisme (théorie)"
+      ],
+      "emergence": {
+        "annee": 1848,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "leninisme",
+      "nom": "Léninisme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1902,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "marxisme-leninisme",
+      "nom": "Marxisme-léninisme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "conseillisme",
+      "nom": "Conseillisme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1920,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "trotskysme",
+      "nom": "Trotskysme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1928,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "maoisme",
+      "nom": "Maoïsme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1949,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "posadisme",
+      "nom": "Posadisme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1962,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "eurocommunisme",
+      "nom": "Eurocommunisme",
+      "famille": "marxismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1975,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "mutuellisme",
+      "nom": "Mutuellisme",
+      "famille": "anarchismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1840,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "anarcho-communisme",
+      "nom": "Anarcho-communisme",
+      "famille": "anarchismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1876,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "anarcho-syndicalisme",
+      "nom": "Anarcho-syndicalisme",
+      "famille": "anarchismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1906,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "anarcho-capitalisme",
+      "nom": "Anarcho-capitalisme",
+      "famille": "anarchismes",
+      "lignees": [
+        "liberalismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1973,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "communalisme",
+      "nom": "Communalisme",
+      "famille": "anarchismes",
+      "lignees": [
+        "ecologismes"
+      ],
+      "alias": [
+        "Écologie sociale"
+      ],
+      "emergence": {
+        "annee": 1982,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "conservatisme-burkeen",
+      "nom": "Conservatisme burkéen",
+      "famille": "conservatismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1790,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "democratie-chretienne",
+      "nom": "Démocratie chrétienne",
+      "famille": "conservatismes",
+      "lignees": [
+        "religieux"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1891,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "corporatisme",
+      "nom": "Corporatisme",
+      "famille": "conservatismes",
+      "lignees": [
+        "fascismes"
+      ],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "gaullisme",
+      "nom": "Gaullisme",
+      "famille": "conservatismes",
+      "lignees": [
+        "autoritarismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1947,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "neoconservatisme",
+      "nom": "Néoconservatisme",
+      "famille": "conservatismes",
+      "lignees": [
+        "marxismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1972,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "paleoconservatisme",
+      "nom": "Paléoconservatisme",
+      "famille": "conservatismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "conservatisme-liberal",
+      "nom": "Conservatisme libéral",
+      "famille": "conservatismes",
+      "lignees": [
+        "liberalismes"
+      ],
+      "alias": [
+        "Libéral-conservatisme"
+      ],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "contre-revolution",
+      "nom": "Contre-révolution",
+      "famille": "traditionalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1796,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "maurrassisme",
+      "nom": "Maurrassisme",
+      "famille": "traditionalismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1899,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "traditionalisme-integral",
+      "nom": "Traditionalisme intégral",
+      "famille": "traditionalismes",
+      "lignees": [
+        "religieux"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1934,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "archeofuturisme",
+      "nom": "Archéofuturisme",
+      "famille": "traditionalismes",
+      "lignees": [
+        "technopolitiques"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1998,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "neoreaction",
+      "nom": "Néoréaction",
+      "famille": "traditionalismes",
+      "lignees": [
+        "technopolitiques"
+      ],
+      "alias": [
+        "Lumières sombres",
+        "Dark Enlightenment"
+      ],
+      "emergence": {
+        "annee": 2009,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "fascisme-italien",
+      "nom": "Fascisme italien",
+      "famille": "fascismes",
+      "lignees": [],
+      "alias": [
+        "Fascisme"
+      ],
+      "emergence": {
+        "annee": 1919,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "nazisme",
+      "nom": "Nazisme",
+      "famille": "fascismes",
+      "lignees": [],
+      "alias": [
+        "National-socialisme"
+      ],
+      "emergence": {
+        "annee": 1920,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "phalangisme",
+      "nom": "Phalangisme",
+      "famille": "fascismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1933,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "neofascisme",
+      "nom": "Néofascisme",
+      "famille": "fascismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1946,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "absolutisme",
+      "nom": "Absolutisme",
+      "famille": "autoritarismes",
+      "lignees": [
+        "traditionalismes"
+      ],
+      "alias": [
+        "Monarchisme absolu"
+      ],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "bonapartisme",
+      "nom": "Bonapartisme",
+      "famille": "autoritarismes",
+      "lignees": [
+        "republicanismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1799,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "caudillisme",
+      "nom": "Caudillisme",
+      "famille": "autoritarismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1825,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "developpementalisme-autoritaire",
+      "nom": "Développementalisme autoritaire",
+      "famille": "autoritarismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1961,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "environnementalisme",
+      "nom": "Environnementalisme",
+      "famille": "ecologismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1962,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "ecologie-profonde",
+      "nom": "Écologie profonde",
+      "famille": "ecologismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1973,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "ecologie-politique",
+      "nom": "Écologie politique",
+      "famille": "ecologismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "ecosocialisme",
+      "nom": "Écosocialisme",
+      "famille": "ecologismes",
+      "lignees": [
+        "marxismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1985,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "decroissance",
+      "nom": "Décroissance",
+      "famille": "ecologismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 2002,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "ecofascisme",
+      "nom": "Écofascisme",
+      "famille": "ecologismes",
+      "lignees": [
+        "fascismes"
+      ],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "feminisme-liberal",
+      "nom": "Féminisme libéral",
+      "famille": "emancipations",
+      "lignees": [
+        "liberalismes"
+      ],
+      "alias": [
+        "Féminisme (origines)"
+      ],
+      "emergence": {
+        "annee": 1791,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "feminisme-radical",
+      "nom": "Féminisme radical",
+      "famille": "emancipations",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1969,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "intersectionnalite",
+      "nom": "Intersectionnalité",
+      "famille": "emancipations",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1989,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "decolonialisme",
+      "nom": "Décolonialisme",
+      "famille": "emancipations",
+      "lignees": [
+        "anticolonialismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 2000,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "panafricanisme",
+      "nom": "Panafricanisme",
+      "famille": "anticolonialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1900,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "baasisme",
+      "nom": "Baasisme",
+      "famille": "anticolonialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1947,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "nasserisme",
+      "nom": "Nassérisme",
+      "famille": "anticolonialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1954,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "non-alignement",
+      "nom": "Non-alignement",
+      "famille": "anticolonialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1955,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "bolivarisme",
+      "nom": "Bolivarisme",
+      "famille": "anticolonialismes",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1999,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "hindutva",
+      "nom": "Hindutva",
+      "famille": "religieux",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1923,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "islamisme",
+      "nom": "Islamisme",
+      "famille": "religieux",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1928,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "integralisme-catholique",
+      "nom": "Intégralisme catholique",
+      "famille": "religieux",
+      "lignees": [
+        "traditionalismes"
+      ],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "theocratie",
+      "nom": "Théocratie",
+      "famille": "religieux",
+      "lignees": [],
+      "alias": [],
+      "emergence": null,
+      "statut": "a_rediger"
+    },
+    {
+      "id": "theologie-de-la-liberation",
+      "nom": "Théologie de la libération",
+      "famille": "religieux",
+      "lignees": [
+        "marxismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 1971,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "technocratie",
+      "nom": "Technocratie",
+      "famille": "technopolitiques",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1932,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "transhumanisme",
+      "nom": "Transhumanisme",
+      "famille": "technopolitiques",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 1990,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "neocameralisme",
+      "nom": "Néocaméralisme",
+      "famille": "technopolitiques",
+      "lignees": [
+        "liberalismes"
+      ],
+      "alias": [],
+      "emergence": {
+        "annee": 2008,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    },
+    {
+      "id": "accelerationnisme",
+      "nom": "Accélérationnisme",
+      "famille": "technopolitiques",
+      "lignees": [],
+      "alias": [],
+      "emergence": {
+        "annee": 2013,
+        "aVerifier": true
+      },
+      "statut": "a_rediger"
+    }
+  ]
+}

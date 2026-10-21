@@ -1,0 +1,11 @@
+{
+  "id": "ecologie",
+  "nom": "Écologie",
+  "ordre": 7,
+  "pole0": "Productivisme",
+  "pole10": "Primauté du vivant",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

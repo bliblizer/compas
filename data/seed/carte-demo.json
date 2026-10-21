@@ -1,0 +1,271 @@
+{
+  "demo": true,
+  "_note": "DONNÉES DE DÉMONSTRATION. Positions dessinées à la main pour la maquette (x, y de 0 à 100, y = 0 en haut). Ne reflètent aucun calcul. À remplacer par la projection des scores réels.",
+  "positions": [
+    {
+      "id": "maoisme",
+      "x": 8,
+      "y": 12
+    },
+    {
+      "id": "marxisme-leninisme",
+      "x": 16,
+      "y": 20
+    },
+    {
+      "id": "posadisme",
+      "x": 6,
+      "y": 28
+    },
+    {
+      "id": "trotskysme",
+      "x": 18,
+      "y": 30
+    },
+    {
+      "id": "eurocommunisme",
+      "x": 30,
+      "y": 44
+    },
+    {
+      "id": "conseillisme",
+      "x": 14,
+      "y": 60
+    },
+    {
+      "id": "nazisme",
+      "x": 40,
+      "y": 4
+    },
+    {
+      "id": "fascisme-italien",
+      "x": 42,
+      "y": 12
+    },
+    {
+      "id": "phalangisme",
+      "x": 50,
+      "y": 18
+    },
+    {
+      "id": "developpementalisme-autoritaire",
+      "x": 22,
+      "y": 26
+    },
+    {
+      "id": "bonapartisme",
+      "x": 46,
+      "y": 24
+    },
+    {
+      "id": "nasserisme",
+      "x": 30,
+      "y": 32
+    },
+    {
+      "id": "panafricanisme",
+      "x": 32,
+      "y": 38
+    },
+    {
+      "id": "bolivarisme",
+      "x": 20,
+      "y": 40
+    },
+    {
+      "id": "contre-revolution",
+      "x": 58,
+      "y": 4
+    },
+    {
+      "id": "maurrassisme",
+      "x": 56,
+      "y": 10
+    },
+    {
+      "id": "neoreaction",
+      "x": 84,
+      "y": 12
+    },
+    {
+      "id": "integralisme-catholique",
+      "x": 76,
+      "y": 6
+    },
+    {
+      "id": "islamisme",
+      "x": 66,
+      "y": 16
+    },
+    {
+      "id": "theologie-de-la-liberation",
+      "x": 18,
+      "y": 48
+    },
+    {
+      "id": "paleoconservatisme",
+      "x": 60,
+      "y": 23
+    },
+    {
+      "id": "gaullisme",
+      "x": 56,
+      "y": 28
+    },
+    {
+      "id": "democratie-chretienne",
+      "x": 54,
+      "y": 36
+    },
+    {
+      "id": "conservatisme-liberal",
+      "x": 74,
+      "y": 40
+    },
+    {
+      "id": "jacobinisme",
+      "x": 42,
+      "y": 32
+    },
+    {
+      "id": "laicisme",
+      "x": 48,
+      "y": 42
+    },
+    {
+      "id": "neo-republicanisme",
+      "x": 58,
+      "y": 62
+    },
+    {
+      "id": "ordoliberalisme",
+      "x": 62,
+      "y": 44
+    },
+    {
+      "id": "neoliberalisme",
+      "x": 76,
+      "y": 48
+    },
+    {
+      "id": "liberalisme-classique",
+      "x": 70,
+      "y": 52
+    },
+    {
+      "id": "social-liberalisme",
+      "x": 54,
+      "y": 54
+    },
+    {
+      "id": "georgisme",
+      "x": 58,
+      "y": 72
+    },
+    {
+      "id": "libertarianisme",
+      "x": 82,
+      "y": 72
+    },
+    {
+      "id": "social-democratie",
+      "x": 42,
+      "y": 50
+    },
+    {
+      "id": "socialisme-democratique",
+      "x": 36,
+      "y": 58
+    },
+    {
+      "id": "cooperatisme",
+      "x": 44,
+      "y": 76
+    },
+    {
+      "id": "ecofascisme",
+      "x": 30,
+      "y": 8
+    },
+    {
+      "id": "ecosocialisme",
+      "x": 28,
+      "y": 54
+    },
+    {
+      "id": "ecologie-politique",
+      "x": 40,
+      "y": 66
+    },
+    {
+      "id": "decroissance",
+      "x": 30,
+      "y": 74
+    },
+    {
+      "id": "ecologie-profonde",
+      "x": 36,
+      "y": 84
+    },
+    {
+      "id": "intersectionnalite",
+      "x": 24,
+      "y": 64
+    },
+    {
+      "id": "feminisme-radical",
+      "x": 18,
+      "y": 70
+    },
+    {
+      "id": "feminisme-liberal",
+      "x": 64,
+      "y": 66
+    },
+    {
+      "id": "communalisme",
+      "x": 22,
+      "y": 80
+    },
+    {
+      "id": "anarcho-syndicalisme",
+      "x": 14,
+      "y": 88
+    },
+    {
+      "id": "anarcho-communisme",
+      "x": 8,
+      "y": 94
+    },
+    {
+      "id": "mutuellisme",
+      "x": 54,
+      "y": 88
+    },
+    {
+      "id": "anarcho-capitalisme",
+      "x": 90,
+      "y": 90
+    },
+    {
+      "id": "technocratie",
+      "x": 72,
+      "y": 30
+    },
+    {
+      "id": "neocameralisme",
+      "x": 92,
+      "y": 26
+    },
+    {
+      "id": "accelerationnisme",
+      "x": 92,
+      "y": 34
+    },
+    {
+      "id": "transhumanisme",
+      "x": 78,
+      "y": 60
+    }
+  ]
+}

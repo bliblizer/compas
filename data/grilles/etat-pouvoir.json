@@ -1,0 +1,11 @@
+{
+  "id": "etat-pouvoir",
+  "nom": "État et pouvoir",
+  "ordre": 2,
+  "pole0": "Sans État",
+  "pole10": "État total",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

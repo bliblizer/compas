@@ -1,0 +1,43 @@
+{
+  "demo": true,
+  "_note": "DONNÉES DE DÉMONSTRATION issues de la maquette radar. Les vraies notes (ancap, marxisme, fascisme, social-démocratie) sont dans l'Excel d'Alexandre et doivent les remplacer.",
+  "grille": "economie",
+  "scores": {
+    "ecosocialisme": [
+      2,
+      3,
+      2,
+      2,
+      3,
+      2,
+      2
+    ],
+    "social-democratie": [
+      6,
+      6,
+      3,
+      5,
+      6,
+      4,
+      5
+    ],
+    "marxisme-leninisme": [
+      0.4,
+      1,
+      1,
+      0.4,
+      2,
+      1,
+      1
+    ],
+    "neoliberalisme": [
+      9,
+      9,
+      8,
+      9,
+      9,
+      8,
+      9
+    ]
+  }
+}

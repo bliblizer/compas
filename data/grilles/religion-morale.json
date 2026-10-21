@@ -1,0 +1,11 @@
+{
+  "id": "religion-morale",
+  "nom": "Religion et morale",
+  "ordre": 9,
+  "pole0": "Sécularisme",
+  "pole10": "Norme religieuse",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

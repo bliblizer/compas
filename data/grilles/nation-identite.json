@@ -1,0 +1,11 @@
+{
+  "id": "nation-identite",
+  "nom": "Nation et identité",
+  "ordre": 5,
+  "pole0": "Universalisme",
+  "pole10": "Primauté nationale",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

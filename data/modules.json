@@ -1,0 +1,30 @@
+{
+  "_note": "Modules transversaux (idéologies « fines » au sens de Freeden) : ils se combinent avec une famille. Liste à compléter.",
+  "modules": [
+    {
+      "id": "nationalisme",
+      "nom": "Nationalisme",
+      "definition": "La nation comme sujet politique central. Existe dans des variantes civiques, ethniques ou anticoloniales."
+    },
+    {
+      "id": "populisme",
+      "nom": "Populisme",
+      "definition": "Opposition d'un peuple présenté comme homogène à une élite jugée illégitime."
+    },
+    {
+      "id": "religiosite",
+      "nom": "Religiosité",
+      "definition": "Référence explicite à une norme religieuse dans le projet politique, sans en faire nécessairement le fondement unique."
+    },
+    {
+      "id": "technophilie",
+      "nom": "Technophilie",
+      "definition": "La technique comme levier principal de transformation sociale."
+    },
+    {
+      "id": "souverainisme",
+      "nom": "Souverainisme",
+      "definition": "Primauté de la souveraineté nationale face aux institutions supranationales."
+    }
+  ]
+}

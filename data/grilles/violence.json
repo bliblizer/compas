@@ -1,0 +1,11 @@
+{
+  "id": "violence",
+  "nom": "Violence",
+  "ordre": 8,
+  "pole0": "Non-violence",
+  "pole10": "Violence légitimée",
+  "polesAValider": true,
+  "statut": "grille construite, barème à établir",
+  "orientation": "[À COMPLÉTER]",
+  "criteres": []
+}

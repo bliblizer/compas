@@ -1,0 +1,356 @@
+{
+  "_note": "Relations de départ issues de la maquette de généalogie. Types : derive, synthese, rupture, opposition. Toutes à sourcer.",
+  "relations": [
+    {
+      "source": "liberalisme-classique",
+      "cible": "social-liberalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "liberalisme-classique",
+      "cible": "ordoliberalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "liberalisme-classique",
+      "cible": "neoliberalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "liberalisme-classique",
+      "cible": "libertarianisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "liberalisme-classique",
+      "cible": "minarchisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "minarchisme",
+      "cible": "anarcho-capitalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "libertarianisme",
+      "cible": "anarcho-capitalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "libertarianisme",
+      "cible": "neocameralisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "neocameralisme",
+      "cible": "neoreaction",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "socialisme-utopique",
+      "cible": "marxisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "marxisme",
+      "cible": "leninisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "leninisme",
+      "cible": "trotskysme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "trotskysme",
+      "cible": "posadisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "leninisme",
+      "cible": "maoisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "leninisme",
+      "cible": "marxisme-leninisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "marxisme",
+      "cible": "conseillisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "marxisme",
+      "cible": "social-democratie",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "leninisme",
+      "cible": "eurocommunisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "social-democratie",
+      "cible": "socialisme-democratique",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "mutuellisme",
+      "cible": "anarcho-communisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "anarcho-communisme",
+      "cible": "anarcho-syndicalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "anarcho-communisme",
+      "cible": "communalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "conservatisme-burkeen",
+      "cible": "neoconservatisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "contre-revolution",
+      "cible": "maurrassisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "jacobinisme",
+      "cible": "radicalisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "radicalisme",
+      "cible": "laicisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "jacobinisme",
+      "cible": "bonapartisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "fascisme-italien",
+      "cible": "neofascisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "environnementalisme",
+      "cible": "ecologie-profonde",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "environnementalisme",
+      "cible": "decroissance",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "environnementalisme",
+      "cible": "ecosocialisme",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "feminisme-liberal",
+      "cible": "feminisme-radical",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "feminisme-radical",
+      "cible": "intersectionnalite",
+      "type": "derive",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "trotskysme",
+      "cible": "neoconservatisme",
+      "type": "synthese",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "bonapartisme",
+      "cible": "gaullisme",
+      "type": "synthese",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "intersectionnalite",
+      "cible": "decolonialisme",
+      "type": "synthese",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "marxisme",
+      "cible": "theologie-de-la-liberation",
+      "type": "synthese",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "marxisme",
+      "cible": "ecosocialisme",
+      "type": "synthese",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    },
+    {
+      "source": "mutuellisme",
+      "cible": "anarcho-capitalisme",
+      "type": "synthese",
+      "date": null,
+      "note": null,
+      "sources": [],
+      "aVerifier": true
+    }
+  ]
+}

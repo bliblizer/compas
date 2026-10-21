@@ -1,0 +1,193 @@
+{
+  "_note": "14 familles-racines validées. Couleurs issues des maquettes (docs/design.md).",
+  "familles": [
+    {
+      "id": "liberalismes",
+      "nom": "Libéralismes",
+      "valeurPivot": "Liberté individuelle, limitation du pouvoir",
+      "couleur": "#C9940A",
+      "ordre": 1,
+      "exemples": [
+        "Libéralisme classique",
+        "Ordolibéralisme",
+        "Social-libéralisme",
+        "Néolibéralisme",
+        "Libertarianisme",
+        "Géorgisme"
+      ]
+    },
+    {
+      "id": "republicanismes",
+      "nom": "Républicanismes",
+      "valeurPivot": "Liberté comme non-domination, vertu civique",
+      "couleur": "#2F6DB5",
+      "ordre": 2,
+      "exemples": [
+        "Jacobinisme",
+        "Néo-républicanisme",
+        "Laïcisme"
+      ]
+    },
+    {
+      "id": "socialismes",
+      "nom": "Socialismes",
+      "valeurPivot": "Égalité, propriété sociale",
+      "couleur": "#E07A5F",
+      "ordre": 3,
+      "exemples": [
+        "Socialisme utopique",
+        "Social-démocratie",
+        "Socialisme démocratique",
+        "Coopératisme",
+        "Distributisme"
+      ]
+    },
+    {
+      "id": "marxismes",
+      "nom": "Marxismes",
+      "valeurPivot": "Lutte des classes, matérialisme historique",
+      "couleur": "#B3263E",
+      "ordre": 4,
+      "exemples": [
+        "Léninisme",
+        "Trotskysme",
+        "Maoïsme",
+        "Conseillisme",
+        "Eurocommunisme",
+        "Posadisme"
+      ]
+    },
+    {
+      "id": "anarchismes",
+      "nom": "Anarchismes",
+      "valeurPivot": "Abolition de la domination et de l'État",
+      "couleur": "#2B2B2B",
+      "ordre": 5,
+      "exemples": [
+        "Mutuellisme",
+        "Anarcho-syndicalisme",
+        "Anarcho-communisme",
+        "Communalisme"
+      ]
+    },
+    {
+      "id": "conservatismes",
+      "nom": "Conservatismes",
+      "valeurPivot": "Continuité, ordre, transmission",
+      "couleur": "#5B4BA0",
+      "ordre": 6,
+      "exemples": [
+        "Conservatisme burkéen",
+        "Démocratie chrétienne",
+        "Gaullisme",
+        "Paléoconservatisme"
+      ]
+    },
+    {
+      "id": "traditionalismes",
+      "nom": "Traditionalismes et réaction",
+      "valeurPivot": "Retour à un ordre perdu",
+      "couleur": "#8A6A43",
+      "ordre": 7,
+      "exemples": [
+        "Contre-révolution",
+        "Maurrassisme",
+        "Traditionalisme intégral",
+        "Néoréaction"
+      ]
+    },
+    {
+      "id": "fascismes",
+      "nom": "Fascismes",
+      "valeurPivot": "Renaissance nationale par la mobilisation totale",
+      "couleur": "#5E6B2F",
+      "ordre": 8,
+      "exemples": [
+        "Fascisme italien",
+        "Nazisme",
+        "Phalangisme",
+        "Néofascisme"
+      ]
+    },
+    {
+      "id": "autoritarismes",
+      "nom": "Autoritarismes non fascistes",
+      "valeurPivot": "L'ordre par un pouvoir fort",
+      "couleur": "#8A9099",
+      "ordre": 9,
+      "exemples": [
+        "Bonapartisme",
+        "Caudillisme",
+        "Absolutisme",
+        "Développementalisme autoritaire"
+      ]
+    },
+    {
+      "id": "ecologismes",
+      "nom": "Écologismes",
+      "valeurPivot": "Rapport au vivant et aux limites",
+      "couleur": "#2E8B57",
+      "ordre": 10,
+      "exemples": [
+        "Environnementalisme",
+        "Écologie politique",
+        "Écosocialisme",
+        "Décroissance",
+        "Écologie profonde"
+      ]
+    },
+    {
+      "id": "emancipations",
+      "nom": "Émancipations",
+      "valeurPivot": "Égalité face à une domination spécifique",
+      "couleur": "#C2499A",
+      "ordre": 11,
+      "exemples": [
+        "Féminisme libéral",
+        "Féminisme radical",
+        "Intersectionnalité",
+        "Décolonialisme"
+      ]
+    },
+    {
+      "id": "anticolonialismes",
+      "nom": "Anticolonialismes et tiers-mondismes",
+      "valeurPivot": "Souveraineté des peuples dominés",
+      "couleur": "#E8902A",
+      "ordre": 12,
+      "exemples": [
+        "Panafricanisme",
+        "Nassérisme",
+        "Baasisme",
+        "Bolivarisme",
+        "Non-alignement"
+      ]
+    },
+    {
+      "id": "religieux",
+      "nom": "Politiques religieuses",
+      "valeurPivot": "La norme politique dérivée du sacré",
+      "couleur": "#5FA8C8",
+      "ordre": 13,
+      "exemples": [
+        "Islamisme",
+        "Théologie de la libération",
+        "Intégralisme catholique",
+        "Hindutva"
+      ]
+    },
+    {
+      "id": "technopolitiques",
+      "nom": "Technopolitiques",
+      "valeurPivot": "La technique comme moteur ou solution",
+      "couleur": "#16A2A2",
+      "ordre": 14,
+      "exemples": [
+        "Technocratie",
+        "Transhumanisme",
+        "Accélérationnisme",
+        "Néocaméralisme"
+      ]
+    }
+  ]
+}
